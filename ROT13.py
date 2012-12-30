@@ -31,7 +31,7 @@ def ROT13(string):
 
     '''
 
-#Testing github between different machines.
+#Changing the same line on two different computers
 def ROT13(string):
     temp = ""
     for n in string:
