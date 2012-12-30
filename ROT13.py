@@ -31,7 +31,7 @@ def ROT13(string):
 
     '''
 
-#This is going to be a conflicting change. Random
+#This is happening in the iss2 branch.
 def ROT13(string):
     temp = ""
     for n in string:
