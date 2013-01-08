@@ -1,10 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
-int calcRPrice(double &tPrice, double &tRPrice, double &ROI);
-int calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI);
-double calcROI(double &tPrice, double &tRPrice);
+void calcRPrice(double &tPrice, double &tRPrice, double &ROI);
+void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI);
+void calcROI(double &tPrice, double &tRPrice);
 
 int main() {
 	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0;
@@ -45,4 +46,14 @@ int main() {
 			again == false;
 		}
 	} while (again);
+}
+
+void calcRPrice(double &tPrice, double &tRPrice, double &ROI) {
+	cout << "Enter a return on investment percentage: " << endl;
+	cin >> ROI;
+	cout << "Enter the original ticket price: " << endl;
+	cin >> tPrice;
+	tRPrice = tPrice * (ROI/100);
+	cout << "The resell price needed in order to match the ROI is: " << \
+		setprecision(4) << "$" << tRPrice << endl;
 }
