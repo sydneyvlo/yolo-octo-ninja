@@ -4,11 +4,11 @@
 using namespace std;
 
 void calcRPrice(double &tPrice, double &tRPrice, double &ROI);
-void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI);
+void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI, double &profit);
 void calcROI(double &tPrice, double &tRPrice);
 
 int main() {
-	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0;
+	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0, profit;
 	int tAmount = 0, choice;
 	bool again = false;
 	string repeat;
@@ -56,4 +56,8 @@ void calcRPrice(double &tPrice, double &tRPrice, double &ROI) {
 	tRPrice = tPrice * (ROI/100);
 	cout << "The resell price needed in order to match the ROI is: " << \
 		setprecision(4) << "$" << tRPrice << endl;
+}
+
+void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI, double &profit) {
+
 }
