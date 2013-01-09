@@ -5,12 +5,12 @@ using namespace std;
 
 void prompt(int &choice);
 void calcRPrice(double &tPrice, double &tRPrice, double &ROI);
-void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI, double &profit);
+void calcTAmount(double &tAmount, double &tPrice, double &tRPrice, double &profit);
 void calcROI(double &tPrice, double &tRPrice);
 
 int main() {
-	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0, profit;
-	int tAmount = 0, choice;
+	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0, profit, tAmount;
+	int choice;
 	bool again = false;
 	char repeat;
 	
@@ -21,7 +21,7 @@ int main() {
 		if (choice == 1) {
 			calcRPrice(tPrice, tRPrice, ROI);
 		} else if (choice == 2) {
-//			calcTAmount(); 
+			calcTAmount(tAmount, tPrice, tRPrice, profit); 
 		} else {
 //			calcROI();
 		}
@@ -65,6 +65,13 @@ void calcRPrice(double &tPrice, double &tRPrice, double &ROI) {
 		setprecision(4) << "$" << tRPrice << endl;
 }
 
-void calcTAmount(int &tAmount, double &tPrice, double &tRPrice, double &ROI, double &profit) {
-
+void calcTAmount(double &tAmount, double &tPrice, double &tRPrice, double &profit) {
+	cout << "Enter revenue goal: " << flush;
+	cin >> profit;
+	cout << "Enter the original price: " << flush;
+	cin >> tPrice;
+	cout << "Enter the resell price: " << flush;
+	cin >> tRPrice;
+	tAmount = profit/(tRPrice - tPrice);
+	cout << "The amount of tickets you need to reach your target revenue goal is: " << setprecision(4) << tAmount << endl;
 }
