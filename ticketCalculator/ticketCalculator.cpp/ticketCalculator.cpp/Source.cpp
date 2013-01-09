@@ -11,7 +11,7 @@ int main() {
 	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0, profit;
 	int tAmount = 0, choice;
 	bool again = false;
-	string repeat;
+	char repeat;
 
 	cout << "Menu\n" 
 		<< endl 
@@ -31,29 +31,29 @@ int main() {
 
 	do {
 		if (choice == 1) {
-			calcRPrice();
+			calcRPrice(tPrice, tRPrice, ROI);
 		} else if (choice == 2) {
-			calcTAmount(); 
+//			calcTAmount(); 
 		} else {
-			calcROI();
+//			calcROI();
 		}
 
 		cout << "Would you like to calculate anything else? (y/n)" << endl;
-		getline(cin, repeat);
-		if (repeat == "y") {
-			again == true;
+		cin >> repeat;
+		if (repeat == 'y') {
+			again = true;
 		} else {
-			again == false;
+			again = false;
 		}
 	} while (again);
 }
 
 void calcRPrice(double &tPrice, double &tRPrice, double &ROI) {
-	cout << "Enter a return on investment percentage: " << endl;
+	cout << "Enter a return on investment percentage: " << flush;
 	cin >> ROI;
-	cout << "Enter the original ticket price: " << endl;
+	cout << "Enter the original ticket price: " << flush;
 	cin >> tPrice;
-	tRPrice = tPrice * (ROI/100);
+	tRPrice = tPrice * (ROI/100) + tPrice;
 	cout << "The resell price needed in order to match the ROI is: " << \
 		setprecision(4) << "$" << tRPrice << endl;
 }
