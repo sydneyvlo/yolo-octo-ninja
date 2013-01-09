@@ -26,6 +26,8 @@ int main() {
 		   \noriginal ticket price and ticket resell price.\n" 
 		<< endl;
 	
+	// Lets turn the prompt up there into a function. So we can repeatedly call it in the do while loop.
+
 	cout << "Choose 1, 2, or 3: " << flush;
 	cin >> choice;
 
