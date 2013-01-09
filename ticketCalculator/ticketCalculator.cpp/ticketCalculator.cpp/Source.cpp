@@ -6,7 +6,7 @@ using namespace std;
 void prompt(int &choice);
 void calcRPrice(double &tPrice, double &tRPrice, double &ROI);
 void calcTAmount(double &tAmount, double &tPrice, double &tRPrice, double &profit);
-void calcROI(double &tPrice, double &tRPrice);
+void calcROI(double &tPrice, double &tRPrice, double &ROI);
 
 int main() {
 	double tPrice = 0.0, tRPrice = 0.0, ROI = 0.0, profit, tAmount;
@@ -23,7 +23,7 @@ int main() {
 		} else if (choice == 2) {
 			calcTAmount(tAmount, tPrice, tRPrice, profit); 
 		} else {
-//			calcROI();
+			calcROI(tPrice, tRPrice, ROI);
 		}
 
 		cout << "Would you like to calculate anything else? (y/n)" << flush;
@@ -32,7 +32,7 @@ int main() {
 			again = true;
 		} else {
 			again = false;
-			cout << "See ya next time." << endl;
+			cout << "See ya next time!" << endl;
 		}
 	} while (again);
 }
@@ -75,3 +75,14 @@ void calcTAmount(double &tAmount, double &tPrice, double &tRPrice, double &profi
 	tAmount = profit/(tRPrice - tPrice);
 	cout << "The amount of tickets you need to reach your target revenue goal is: " << setprecision(4) << tAmount << endl;
 }
+
+void calcROI(double &tPrice, double &tRPrice, double &ROI) {
+	cout << "Enter the original price: " << flush;
+	cin >> tPrice;
+	cout << "Enter the resell price: " << flush;
+	cin >> tRPrice;
+	ROI = ((tRPrice - tPrice)/tPrice) * 100;
+	cout << "The return on investment percentage is: " << setprecision(4) << ROI << "%" << endl;
+}
+
+//Calculate profit
