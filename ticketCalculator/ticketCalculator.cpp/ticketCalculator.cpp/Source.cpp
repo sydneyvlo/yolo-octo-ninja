@@ -13,8 +13,7 @@ int main() {
 	int choice;
 	bool again = false;
 	char repeat;
-	
-	// Lets turn the prompt up there into a function. So we can repeatedly call it in the do while loop.
+
 
 	do {
 		prompt(choice);
@@ -85,4 +84,4 @@ void calcROI(double &tPrice, double &tRPrice, double &ROI) {
 	cout << "The return on investment percentage is: " << setprecision(4) << ROI << "%" << endl;
 }
 
-//Calculate profit
+//Calculate profit based on original ticket price and resell price.
