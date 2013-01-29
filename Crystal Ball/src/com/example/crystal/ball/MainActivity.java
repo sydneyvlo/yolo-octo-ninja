@@ -2,21 +2,26 @@ package com.example.crystal.ball;
 
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.crystal.ball.ShakeDetector.OnShakeListener;
 
 public class MainActivity extends Activity  { //Activity determines how the front screen will work
 	private CrystalBall mCrystalBall = new CrystalBall();
 	private TextView mAnswerLabel; // making the button a member variable lets us have access to the variable anywhere in the class
-	private Button mGetAnswerButton;
+	//private Button mGetAnswerButton;
 	private ImageView mCrystalBallImage;
+	private SensorManager mSensorManager;
+	private Sensor mAccelerometer;
+	private ShakeDetector mShakeDetector;
     
 @Override
     public void onCreate(Bundle savedInstanceState) { // This is what gets called when the app starts
@@ -25,25 +30,47 @@ public class MainActivity extends Activity  { //Activity determines how the fron
         
         // Assigning the views from the layout file.
         mAnswerLabel = (TextView) findViewById(R.id.textView1);
-        mGetAnswerButton = (Button) findViewById(R.id.button1);
+        //mGetAnswerButton = (Button) findViewById(R.id.button1);
         mCrystalBallImage = (ImageView) findViewById(R.id.imageView1);
         
-        mGetAnswerButton.setOnClickListener(new View.OnClickListener() {
+ /*       mGetAnswerButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				
-				// Update the label with our dynamic answer
-				
-				String answer = mCrystalBall.getAnAnswer();
-				mAnswerLabel.setText(answer);
-				
-				animateCrystalBall();
-				animateAnswer();
-				playSound();
+				handleNewAnswer();
 				
 			}
 		});
-    }
+*/
+        
+        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        
+        // gets the accelerometer from the manager
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        
+        // Same code you had for the onClickListener
+        mShakeDetector = new ShakeDetector(new OnShakeListener() {
+			
+			public void onShake() {
+				handleNewAnswer();
+				
+			}
+		});
+        
+	}
+        
+    @Override
+    public void onResume() {
+    	super.onResume(); // calls the super classes onResume method
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer, 
+        		SensorManager.SENSOR_DELAY_UI);
+        }
+        
+    @Override
+    public void onPause() {
+    	super.onPause(); // calls the super classes onPause method
+    	mSensorManager.unregisterListener(mShakeDetector);
+        }
 
 	private void animateCrystalBall() {
 		mCrystalBallImage.setImageResource(R.drawable.ball_animation);
@@ -82,4 +109,15 @@ public class MainActivity extends Activity  { //Activity determines how the fron
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+
+	private void handleNewAnswer() {
+		// Update the label with our dynamic answer
+		
+		String answer = mCrystalBall.getAnAnswer();
+		mAnswerLabel.setText(answer);
+		
+		animateCrystalBall();
+		animateAnswer();
+		playSound();
+	}
 }
