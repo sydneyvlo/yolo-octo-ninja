@@ -64,7 +64,7 @@ public class MainActivity extends Activity  { //Activity determines how the fron
     	super.onResume(); // calls the super classes onResume method
         mSensorManager.registerListener(mShakeDetector, mAccelerometer, 
         		SensorManager.SENSOR_DELAY_UI);
-        }
+    }
         
     @Override
     public void onPause() {
