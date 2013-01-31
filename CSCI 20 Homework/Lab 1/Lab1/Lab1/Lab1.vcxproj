@@ -76,6 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="LetterBag.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LetterBag.cpp" />
+    <ClCompile Include="LetterBagTester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

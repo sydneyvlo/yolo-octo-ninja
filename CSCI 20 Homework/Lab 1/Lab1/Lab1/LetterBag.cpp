@@ -5,15 +5,17 @@
 #include <ctype.h>
 using namespace std;
 
-template <class ItemType>
-LetterBag<ItemType> :: LetterBag() {
+
+
+//template <class ItemType>
+LetterBag :: LetterBag() {
 	for (int i = 1; i < 27; i++) {
 		Bag[i] = 0;
 	}
 }
 
-template <class ItemType>
-LetterBag<ItemType> :: LetterBag(const vector<char> &v) {
+//template <class ItemType>
+LetterBag :: LetterBag(const  std::vector<char> &v) {
 	for (int i = 1; i < 27; i++) {
 		Bag[i] = 0;
 	}
