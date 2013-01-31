@@ -48,7 +48,7 @@ class LetterBag {
 		vector<char> toVector() const;
 
 	private:
-		ItemType Bag[27];
+		int Bag[27];
 
 
 };
