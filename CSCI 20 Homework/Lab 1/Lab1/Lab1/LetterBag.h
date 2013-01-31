@@ -10,7 +10,7 @@ template <class ItemType>
 class LetterBag {
 	public:
 
-		// Constructor. Takes in no arguments. Will create the bag
+		// Constructor. Takes in no arguments. Will do absolutely nothing.
 		LetterBag();
 
 		// Put the letters from the vector v into the bag.
