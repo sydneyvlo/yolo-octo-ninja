@@ -28,3 +28,39 @@ LetterBag :: LetterBag(const  std::vector<char> &v) {
 		}
 	}
 }
+
+bool LetterBag :: operator==(const LetterBag &other) const {
+	for (int i = 1; i < 27; i++) {
+		if (Bag[i] != other.Bag[i]) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool LetterBag :: operator!=(const LetterBag &other) const {
+	if (!operator==(other)) {
+		return true;
+	}
+
+	return false;
+}
+
+int LetterBag :: getCurrentSize() const {
+	int size = 0;
+	for (int i = 1; i < 27; i++) {
+		size += Bag[i];
+	}
+
+	return size;
+}
+
+bool LetterBag :: isEmpty() const {
+	LetterBag temp;
+	if (operator==(temp)) {
+		return true;
+	}
+
+	return false;
+}

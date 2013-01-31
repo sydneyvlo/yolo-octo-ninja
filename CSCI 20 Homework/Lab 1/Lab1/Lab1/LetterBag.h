@@ -24,7 +24,7 @@ class LetterBag {
 		bool operator!=(const LetterBag &other) const;
 
 		// Returns the current size of the bag.
-		int getCurrrentSize() const;
+		int getCurrentSize() const;
 
 		// Returns true if the bag is empty. False if it is not.
 		bool isEmpty() const;
