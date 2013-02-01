@@ -90,4 +90,6 @@ int LetterBag :: getFrequency(char c) const {
 	return Bag[cNum - 96];
 }
 
-
+vector<char> LetterBag :: toVector() const {
+	
+}
