@@ -99,4 +99,6 @@ vector<char> LetterBag :: toVector() const {
 			temp.push_back(char(nChar));
 		}
 	}
+
+	return temp;
 }
