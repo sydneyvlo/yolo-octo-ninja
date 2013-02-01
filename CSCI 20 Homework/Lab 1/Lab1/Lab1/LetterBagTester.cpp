@@ -32,7 +32,7 @@ int main() {
 	 Bag1.clear();
 	 cout << "Should output zero: " << Bag1.getCurrentSize() << endl;
 
-	 // Test isEmpty method
+	 // Test isEmpty method takes bag
 	 cout << "Should say the bag is empty." << endl;
 	 if (Bag1.isEmpty()) {
 		cout << "The bag is empty." << endl;
@@ -83,6 +83,28 @@ int main() {
 	 } else {
 		cout << "The bags are the same." << endl;
 	 }
+
+	 // Testing a bag with a large amount of items
+	 vector<char> temp2(10000, 'a');
+	 LetterBag Bag5(temp2);
+	 Bag5.add('b');
+	 Bag5.add('c');
+	 Bag5.add('d');
+	 Bag5.add('e');
+	 Bag5.add('f');
+	 cout << "Should output 10000: " << Bag5.getFrequency('a') << endl;
+	 cout << "Should output 10005: " << Bag5.getCurrentSize() << endl;
+	 cout << "Should say that it is empty." << endl;
+	 if (Bag5.clear().isEmpty()) {
+		cout << "Bag is empty." << endl;
+	 } else {
+		cout << "Bag is not empty." << endl;
+	 }
+
+	 if ((Bag5.add('a').isEmpty() ) == false) {
+		cout << "Success!" << endl;
+	 }
+
 
 
 }
