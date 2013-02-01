@@ -77,4 +77,17 @@ LetterBag & LetterBag :: remove(char c) {
 	return *this;
 }
 
+LetterBag & LetterBag :: clear() {
+	for (int i = 1; i < 27; i++) {
+		Bag[i] = 0;
+	}
+
+	return *this;
+}
+
+int LetterBag :: getFrequency(char c) const {
+	int cNum = int(c);
+	return Bag[cNum - 96];
+}
+
 
