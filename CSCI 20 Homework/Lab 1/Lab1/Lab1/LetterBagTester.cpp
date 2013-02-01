@@ -40,6 +40,49 @@ int main() {
 		cout << "The bag is not empty." << endl;
 	 }
 
+	 // Test operator== method
+	 cout << "Should output the bags are not the same." << endl;
+	 if (Bag1 == Bag2) {
+		cout << "The bags are the same." << endl;
+	 } else {
+		cout << "The bags are not the same." << endl;
+	 }
+
+	 Bag1.add('a');
+	 Bag1.add('a');
+	 Bag1.add('b');
+	 Bag1.add('c');
+	 Bag2.add('a');
+
+	 cout << "Should output the bags are the same." << endl;
+	 if (Bag1 == Bag2) {
+		cout << "The bags are the same." << endl;
+	 } else {
+		cout << "Error has occurred" << endl;
+	 }
+
+	 // Test the method operator!=
+	 LetterBag Bag3;
+	 Bag3.add('a');
+	 LetterBag Bag4;
+	 Bag4.add('f');
+
+	 cout << "Should output the bags are different." << endl;
+	 if (Bag3 != Bag4) {
+		cout << "The bags are different." << endl;
+	 } else {
+		cout << "Error has occurred." << endl;
+	 }
+
+	 Bag3.clear();
+	 Bag4.clear();
+
+	 cout << "Should say the bags are the same." << endl;
+	 if (Bag3 != Bag4) {
+		 cout << "The bags are not the same." << endl;
+	 } else {
+		cout << "The bags are the same." << endl;
+	 }
 
 
 }
