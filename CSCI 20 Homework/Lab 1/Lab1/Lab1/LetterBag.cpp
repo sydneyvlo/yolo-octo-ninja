@@ -65,4 +65,16 @@ bool LetterBag :: isEmpty() const {
 	return false;
 }
 
+LetterBag & LetterBag :: add(char c) {
+	int cNum = int(c);
+	Bag[cNum - 96]++;
+	return *this;
+}
+
+LetterBag & LetterBag :: remove(char c) {
+	int cNum = int(c);
+	Bag[cNum - 96]--;
+	return *this;
+}
+
 
