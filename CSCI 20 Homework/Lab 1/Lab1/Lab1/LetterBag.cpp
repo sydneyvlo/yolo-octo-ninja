@@ -91,5 +91,12 @@ int LetterBag :: getFrequency(char c) const {
 }
 
 vector<char> LetterBag :: toVector() const {
-	
+	std::vector<char> temp;
+	int nChar;
+	for (int i = 1; i < 27; i++) {
+		for (int n = 0; n < Bag[i]; n++) {
+			nChar = i + 96;
+			temp.push_back(char(nChar));
+		}
+	}
 }
