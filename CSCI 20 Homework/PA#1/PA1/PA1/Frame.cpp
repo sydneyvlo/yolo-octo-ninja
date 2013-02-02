@@ -24,6 +24,13 @@ Frame :: Frame(bool lastFrm = false, int r1 = -1, int r2 = -1, int r3 = -1) {
 	}
 }
 
+// Depending on the roll number I am going to check if the previous roll
+// isn't -1 and if it isn't I am going to substract the x amount of
+// previous rolls from the max.
 bool Frame :: outOfRange(int rollNum, int max) {
-	
+	if (rollNum == 1) {
+		if (roll1 > max) {
+			
+		}
+	}
 }

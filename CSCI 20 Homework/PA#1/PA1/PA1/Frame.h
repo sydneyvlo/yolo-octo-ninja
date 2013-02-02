@@ -146,7 +146,7 @@ private:
 			 roll3;    // number of pins knocked down on third roll or -1 (no third roll yet).
 	bool lastFrame;    // true iff this is a last frame
 	static string rollToString(int roll);
-	static bool outOfRange(int rollNum, int max);
+	bool outOfRange(int rollNum, int max);
 };
 
 #endif
