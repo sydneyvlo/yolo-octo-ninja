@@ -76,6 +76,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Frame.cpp" />
+    <ClCompile Include="Sydney%27sFrameTester.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Frame.h" />
+    <ClInclude Include="Scoresheet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

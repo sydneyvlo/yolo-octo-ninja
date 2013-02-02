@@ -60,7 +60,7 @@ public:
 	 //     frame5 is [9, ]  (Frame not over yet),
 	 //     subsequent frames are all new,
 	 //     then scores will get the following values: {20, 36, 56, -1, -1, -1, -1, -1, -1, -1}
-	 void getScores(int scores[]) ;
+	void getScores(int scores[]) ;
 	
 	// print the scoresheet along with current scores.
 	void print() ;
