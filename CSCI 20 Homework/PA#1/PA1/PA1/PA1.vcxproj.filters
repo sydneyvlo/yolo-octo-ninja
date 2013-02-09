@@ -27,6 +27,9 @@
     <ClCompile Include="Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scoresheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Frame.h">
