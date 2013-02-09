@@ -12,32 +12,32 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 	roll3 = r3;
 	lastFrame = lastFrm;
 	if (cusOutOfRange(1, PINS)) {
-		cout << "r1 is illegal" << endl;
+//		cout << "r1 is illegal" << endl;
 		roll1 = -1;
 		roll2 = -1;
 		roll3 = -1;
-		cout << "roll1: " << roll1 << endl;
-		cout << "roll2: " << roll2 << endl;
-		cout << "roll3: " << roll3 << endl;
+//		cout << "roll1: " << roll1 << endl;
+//		cout << "roll2: " << roll2 << endl;
+//		cout << "roll3: " << roll3 << endl;
 	} else if ((roll1 == -1 && roll2 != -1) || cusOutOfRange(2, PINS)) {
 //		cout << lastFrm << " " << r1 << " " << r2 << " " << r3 << endl;
-		cout << "r2 is illegal" << endl;
+//		cout << "r2 is illegal" << endl;
 		roll2 = -1;
 		roll3 = -1;
-		cout << "roll1: " << roll1 << endl;
-		cout << "roll2: " << roll2 << endl;
-		cout << "roll3: " << roll3 << endl;
-	} else if (((roll1 == -1 || roll2 == -1) && roll3 != -1) || cusOutOfRange(3, PINS) || lastFrm == false) {
-		cout << "r3 is illegal" << endl;
+//		cout << "roll1: " << roll1 << endl;
+//		cout << "roll2: " << roll2 << endl;
+//		cout << "roll3: " << roll3 << endl;
+	} else if (((roll1 == -1 || roll2 == -1) && roll3 != -1) || cusOutOfRange(3, PINS) || lastFrame == false) {
+//		cout << "r3 is illegal" << endl;
 		roll3 = -1;
-				cout << "roll1: " << roll1 << endl;
-		cout << "roll2: " << roll2 << endl;
-		cout << "roll3: " << roll3 << endl;
+//				cout << "roll1: " << roll1 << endl;
+//		cout << "roll2: " << roll2 << endl;
+//		cout << "roll3: " << roll3 << endl;
 	} else {
-		cout << "Successful values" << endl;
-		cout << "roll1: " << roll1 << endl;
-		cout << "roll2: " << roll2 << endl;
-		cout << "roll3: " << roll3 << endl;
+//		cout << "Successful values" << endl;
+//		cout << "roll1: " << roll1 << endl;
+//		cout << "roll2: " << roll2 << endl;
+//		cout << "roll3: " << roll3 << endl;
 	}
 
 }
@@ -192,7 +192,7 @@ void Frame::setPins(int pins)
 
 string Frame::rollToString(int roll)
 {
-	char n[2];
+	char n[3];
 	itoa(roll, n, 10);
 	string num = string(n);
 	return roll >= 0 ? num: " ";

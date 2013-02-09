@@ -26,4 +26,9 @@ int main() {
 	cout << "test6" << endl;
 	Frame test6(true, 1, 11, 5);
 	cout << endl;
+
+	cout << "test7" << endl;
+	Frame test7(true, 10, 10, 10);
+	cout << test7.roll1 << endl;
+	cout << endl;
 }
