@@ -89,3 +89,16 @@ Frame Scoresheet::getFrame(int frameNum) const
 		return(this->frames[frameNum]);
 	}
 }
+
+bool Scoresheet::setNextRoll (int rollValue) {
+	if (isComplete () || rollValue < 0 || rollValue > 10) return false;
+	else {
+		frames[getCurrentFrameNum()] = rollValue;
+		currentFrameNum++;
+		return true;
+	}
+	
+	//  if the scoresheet is complete or rollValue is illegal return false.
+	//  otherwise set the next roll of the current frame to rollvalue and return true.
+	//  update currentFrameNum, if necessary.
+}
