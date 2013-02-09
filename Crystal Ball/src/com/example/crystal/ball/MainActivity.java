@@ -7,6 +7,7 @@ import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import com.example.crystal.ball.ShakeDetector.OnShakeListener;
 
 public class MainActivity extends Activity  { //Activity determines how the front screen will work
+	
+	private static final String TAG = "MainActivity";
 	private CrystalBall mCrystalBall = new CrystalBall();
 	private TextView mAnswerLabel; // making the button a member variable lets us have access to the variable anywhere in the class
 	//private Button mGetAnswerButton;
@@ -56,6 +59,10 @@ public class MainActivity extends Activity  { //Activity determines how the fron
 				
 			}
 		});
+        
+        //Toast.makeText(this, "Yay! Our Activity was created!",Toast.LENGTH_LONG).show();
+        Log.d(TAG, "We're logging from the onCreate method");
+        
         
 	}
         
