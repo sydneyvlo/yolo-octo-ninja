@@ -53,16 +53,30 @@ bool Frame :: cusOutOfRange(int rollNum, int max) {
 			return false;
 		}
 	} else if (rollNum == 2) {
-		if (roll2 < -1 || roll2 > (max - roll1)) {
+		if (roll2 < -1) {
 			return true;
+		} else if (lastFrame == false) {
+			if (roll2 > (max - roll1)) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}
 	} else if (rollNum == 3) {
-		if (roll3 < -1 || roll3 > max) {
-			return true;
+		if (roll2 < 10) {
+			if (roll3 < -1 || roll3 > (max-roll2)) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
-			return false;
+			if (roll3 < -1 || roll3 > max) {
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 
