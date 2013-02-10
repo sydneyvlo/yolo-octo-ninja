@@ -4,6 +4,11 @@
 
 const int Scoresheet::MAXFRAMES = 3;
 
+void Scoresheet :: getScores(int scores[]) {
+
+}
+
+/***
 int Scoresheet::getCurrentFrameNum() const
 {
 	return (Scoresheet::currentFrameNum);
@@ -102,3 +107,4 @@ bool Scoresheet::setNextRoll (int rollValue) {
 	//  otherwise set the next roll of the current frame to rollvalue and return true.
 	//  update currentFrameNum, if necessary.
 }
+***/
