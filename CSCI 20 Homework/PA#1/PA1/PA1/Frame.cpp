@@ -7,11 +7,13 @@ using namespace std;
 int Frame :: PINS = 10;
 
 Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
+	cout << "DOES THIS GET HERE1" << endl;
 	roll1 = r1;
 	roll2 = r2;
 	roll3 = r3;
 	lastFrame = lastFrm;
 	if (cusOutOfRange(1, PINS)) {
+		cout << "DOES THIS GET HERE4" << endl;
 //		cout << "r1 is illegal" << endl;
 		roll1 = -1;
 		roll2 = -1;
@@ -20,6 +22,7 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
 	} else if ((roll1 == -1 && roll2 != -1) || cusOutOfRange(2, PINS)) {
+		cout << "DOES THIS GET HERE5" << endl;
 //		cout << lastFrm << " " << r1 << " " << r2 << " " << r3 << endl;
 //		cout << "r2 is illegal" << endl;
 		roll2 = -1;
@@ -28,12 +31,37 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
 	} else if (((roll1 == -1 || roll2 == -1) && roll3 != -1) || cusOutOfRange(3, PINS) || lastFrame == false) {
+		cout << "DOES THIS GET HERE6" << endl;
 //		cout << "r3 is illegal" << endl;
 		roll3 = -1;
 //				cout << "roll1: " << roll1 << endl;
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
-	} else {
+	} else  if (lastFrame) {
+		cout << "DOES THIS GET HERE2" << endl;
+		if (roll1 == PINS) {
+			if (roll2 != PINS) {
+				if (roll3 > (PINS - roll2)) {
+					roll3 = -1;
+				}
+			} else if (roll2 == PINS) {
+				if (roll3 > PINS) {
+					roll3 = -1;
+				}
+			}
+		} else {
+			cout << "DOES THIS GET HERE3" << endl;
+			if ((roll2 + roll1) == PINS) {
+				if (roll3 > PINS) {
+					roll3 = -1;
+				}
+			} else {
+				roll3 = -1;
+				if (roll2 > (PINS - roll1)) {
+					roll2 = -1;
+				}
+			}
+		}
 //		cout << "Successful values" << endl;
 //		cout << "roll1: " << roll1 << endl;
 //		cout << "roll2: " << roll2 << endl;
@@ -62,11 +90,32 @@ bool Frame :: cusOutOfRange(int rollNum, int max) {
 				return false;
 			}
 		} else {
-			return false;
+			if (roll1 == max) {
+				if (roll2 < -1 || roll2 > max) {
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				if (roll2 > (max - roll1)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
 		}
 	} else if (rollNum == 3) {
-		if (roll2 < 10) {
-			if (roll3 < -1 || roll3 > (max-roll2)) {
+		cout << "DOES THIS GET HERE7" << endl;
+		if (roll2 < max) {
+			cout << "DOES THIS GET HERE8" << endl;
+			if ((roll1 + roll2) == max) {
+				if (roll3 < -1 || roll3 > max) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			else if (roll3 < -1 || roll3 > (max-roll2)) {
 				return true;
 			} else {
 				return false;
@@ -197,9 +246,11 @@ void Frame::setPins(int pins)
 	{
 		Frame::PINS = 3;
 	}
-	if(pins > maxPins)
+	else if(pins > maxPins)
 	{
 		Frame::PINS = 20;
+	} else {
+		PINS = pins;
 	}
 	return;
 }
