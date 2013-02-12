@@ -7,13 +7,13 @@ using namespace std;
 int Frame :: PINS = 10;
 
 Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
-	cout << "DOES THIS GET HERE1" << endl;
+//	cout << "DOES THIS GET HERE1" << endl;
 	roll1 = r1;
 	roll2 = r2;
 	roll3 = r3;
 	lastFrame = lastFrm;
 	if (cusOutOfRange(1, PINS)) {
-		cout << "DOES THIS GET HERE4" << endl;
+//		cout << "DOES THIS GET HERE4" << endl;
 //		cout << "r1 is illegal" << endl;
 		roll1 = -1;
 		roll2 = -1;
@@ -22,7 +22,7 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
 	} else if ((roll1 == -1 && roll2 != -1) || cusOutOfRange(2, PINS)) {
-		cout << "DOES THIS GET HERE5" << endl;
+//		cout << "DOES THIS GET HERE5" << endl;
 //		cout << lastFrm << " " << r1 << " " << r2 << " " << r3 << endl;
 //		cout << "r2 is illegal" << endl;
 		roll2 = -1;
@@ -31,14 +31,14 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
 	} else if (((roll1 == -1 || roll2 == -1) && roll3 != -1) || cusOutOfRange(3, PINS) || lastFrame == false) {
-		cout << "DOES THIS GET HERE6" << endl;
+//		cout << "DOES THIS GET HERE6" << endl;
 //		cout << "r3 is illegal" << endl;
 		roll3 = -1;
 //				cout << "roll1: " << roll1 << endl;
 //		cout << "roll2: " << roll2 << endl;
 //		cout << "roll3: " << roll3 << endl;
 	} else  if (lastFrame) {
-		cout << "DOES THIS GET HERE2" << endl;
+//		cout << "DOES THIS GET HERE2" << endl;
 		if (roll1 == PINS) {
 			if (roll2 != PINS) {
 				if (roll3 > (PINS - roll2)) {
@@ -50,7 +50,7 @@ Frame :: Frame(bool lastFrm, int r1, int r2, int r3) {
 				}
 			}
 		} else {
-			cout << "DOES THIS GET HERE3" << endl;
+//			cout << "DOES THIS GET HERE3" << endl;
 			if ((roll2 + roll1) == PINS) {
 				if (roll3 > PINS) {
 					roll3 = -1;
