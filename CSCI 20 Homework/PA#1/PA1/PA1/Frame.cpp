@@ -105,9 +105,9 @@ bool Frame :: cusOutOfRange(int rollNum, int max) {
 			}
 		}
 	} else if (rollNum == 3) {
-		cout << "DOES THIS GET HERE7" << endl;
+//		cout << "DOES THIS GET HERE7" << endl;
 		if (roll2 < max) {
-			cout << "DOES THIS GET HERE8" << endl;
+//			cout << "DOES THIS GET HERE8" << endl;
 			if ((roll1 + roll2) == max) {
 				if (roll3 < -1 || roll3 > max) {
 					return true;
