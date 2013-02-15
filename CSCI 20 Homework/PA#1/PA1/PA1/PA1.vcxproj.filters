@@ -21,7 +21,10 @@
     <ClCompile Include="Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FrameTester.cpp">
+    <ClCompile Include="Scoresheet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoresheetTester.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

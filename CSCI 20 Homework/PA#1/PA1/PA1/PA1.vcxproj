@@ -77,7 +77,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Frame.cpp" />
-    <ClCompile Include="FrameTester.cpp" />
+    <ClCompile Include="Scoresheet.cpp" />
+    <ClCompile Include="ScoresheetTester.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,20 @@
  #include "Scoresheet.h"
 
 
-const int Scoresheet::MAXFRAMES = 3;
+//const int Scoresheet::MAXFRAMES;
+/***
+Scoresheet :: Scoresheet() : ID(count++) {
+}
+
+Scoresheet :: Scoresheet(const Scoresheet &other) : ID(count++) {
+}
+
+Scoresheet &operator
+***/
+
+
+
+
 
 void Scoresheet :: getScores(int scores[]) {
 	for (int i = 1; i < (MAXFRAMES + 1); i++) {
@@ -14,7 +27,7 @@ void Scoresheet :: getScores(int scores[]) {
 			// If it is a spare I want to do 10 + whatever the next roll is.
 			if (frames[i].isSpare()) {
 				// In order to score a spare you need to know the value of the next roll and if the roll of the next frame is -1 that means the roll has yet to be determined.
-				if (frames[i+1].getRoll1 != -1) {
+				if (frames[i+1].getRoll1() != -1) {
 					// The previous frame needs to have a score for any future frame to be scored.
 					if (frames[i-1].getTotal() != -1) {
 						// The current score is dependent on past scores and the rolls of the next frame.
@@ -26,19 +39,19 @@ void Scoresheet :: getScores(int scores[]) {
 					scores[i-1] = -1;
 				}
 			} else if (frames[i].isStrike()) {
-				if (frames[i+1].getRoll1 != -1) {
+				if (frames[i+1].getRoll1() != -1) {
 					// This below if statement is for scoring the first frame because you don't need to go back to previous frames to get the current score because it is first.
 					if (i != 1) {
 						if (frames[i+1].isStrike()) {
 							scores[i-1] = frames[i].getPins() + frames[i].getPins() + frames[i+2].getRoll1() + scores[i-2];
 						} else {
-							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2 + scores[i-2];
+							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2() + scores[i-2];
 						}
 					} else {
 						if (frames[i+1].isStrike()) {
 							scores[i-1] = frames[i].getPins() + frames[i].getPins() + frames[i+2].getRoll1();
 						} else {
-							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2;
+							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2();
 						}
 					}
 				} else {
@@ -47,16 +60,17 @@ void Scoresheet :: getScores(int scores[]) {
 			// This is for the openframe scenario
 			} else {
 				if (i != 1) {
-					scores[i - 1] = scores[i-2] + frames[i].getRoll1 + frames[i].getRoll2;
+					scores[i-1] = scores[i-2] + frames[i].getRoll1() + frames[i].getRoll2();
 				} else {
-					scores[i - 1] = frames[i].getRoll1 + frames[i].getRoll2;
+					scores[i-1] = frames[i].getRoll1() + frames[i].getRoll2();
 				}
 			}
 		}
 	}
 }
 
-/***
+
+
 int Scoresheet::getCurrentFrameNum() const
 {
 	return (Scoresheet::currentFrameNum);
@@ -155,4 +169,3 @@ bool Scoresheet::setNextRoll (int rollValue) {
 	//  otherwise set the next roll of the current frame to rollvalue and return true.
 	//  update currentFrameNum, if necessary.
 }
-***/
