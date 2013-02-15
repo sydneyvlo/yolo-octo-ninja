@@ -48,6 +48,8 @@ class LetterBag {
 		// Returns a vector that is a duplicate of the bag.(Which in our case is an array).
 		 std::vector<char> toVector() const;
 
+		 bool isSubbag(const LetterBag &other);
+
 	private:
 		int Bag[27];
 

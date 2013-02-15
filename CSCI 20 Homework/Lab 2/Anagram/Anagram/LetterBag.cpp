@@ -102,3 +102,7 @@ vector<char> LetterBag :: toVector() const {
 
 	return temp;
 }
+
+bool LetterBag :: isSubbag(const LetterBag &other) {
+
+}
