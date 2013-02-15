@@ -18,7 +18,7 @@ void Scoresheet :: getScores(int scores[]) {
 					// The previous frame needs to have a score for any future frame to be scored.
 					if (frames[i-1].getTotal() != -1) {
 						// The current score is dependent on past scores and the rolls of the next frame.
-						scores[i-1] = 10 + frames[i+1].getRoll1() + frames[i-1].getTotal();
+						scores[i-1] = 10 + frames[i+1].getRoll1() + scores[i-2];
 					} else {
 						scores[i-1] = -1;
 					}
@@ -26,7 +26,31 @@ void Scoresheet :: getScores(int scores[]) {
 					scores[i-1] = -1;
 				}
 			} else if (frames[i].isStrike()) {
-				
+				if (frames[i+1].getRoll1 != -1) {
+					// This below if statement is for scoring the first frame because you don't need to go back to previous frames to get the current score because it is first.
+					if (i != 1) {
+						if (frames[i+1].isStrike()) {
+							scores[i-1] = frames[i].getPins() + frames[i].getPins() + frames[i+2].getRoll1() + scores[i-2];
+						} else {
+							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2 + scores[i-2];
+						}
+					} else {
+						if (frames[i+1].isStrike()) {
+							scores[i-1] = frames[i].getPins() + frames[i].getPins() + frames[i+2].getRoll1();
+						} else {
+							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + frames[i+1].getRoll2;
+						}
+					}
+				} else {
+					scores[i-1] = -1;
+				}
+			// This is for the openframe scenario
+			} else {
+				if (i != 1) {
+					scores[i - 1] = scores[i-2] + frames[i].getRoll1 + frames[i].getRoll2;
+				} else {
+					scores[i - 1] = frames[i].getRoll1 + frames[i].getRoll2;
+				}
 			}
 		}
 	}
