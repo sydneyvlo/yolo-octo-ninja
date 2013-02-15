@@ -110,7 +110,9 @@ bool LetterBag :: isSubbag(const LetterBag &other) {
 		if (other.getFrequency(char(k)) < Bag[i]) {
 			oneLess = true;
 		} else {
-			hasMore = true;
+			if (other.getFrequency(char(k)) == Bag[i]) {
+				hasMore = true;
+			}
 		}
 	}
 

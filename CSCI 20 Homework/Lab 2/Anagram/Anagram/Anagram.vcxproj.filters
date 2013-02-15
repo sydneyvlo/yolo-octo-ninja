@@ -15,11 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Lab1\Lab1\LetterBag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Anagram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LetterBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LetterBag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
