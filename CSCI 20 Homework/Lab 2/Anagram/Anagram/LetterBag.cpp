@@ -104,5 +104,21 @@ vector<char> LetterBag :: toVector() const {
 }
 
 bool LetterBag :: isSubbag(const LetterBag &other) {
+	bool oneLess = false;
+	bool hasMore = false;
+	for (int i = 1, k = 97; i < 27; i++, k++) {
+		if (other.getFrequency(char(k)) < Bag[i]) {
+			oneLess = true;
+		} else {
+			hasMore = true;
+		}
+	}
 
+	if (hasMore) {
+		return false;
+	} else if (oneLess) {
+		return true;
+	} else {
+		return false;
+	}
 }
