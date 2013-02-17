@@ -83,7 +83,7 @@ void Scoresheet :: print() {
 				} else if (frames[i].bonusStrikes()) {
 					cout << "X,X, " << frames[i].getRoll3() << flush;
 				} else {
-					cout << frames[i].getRoll1 << "," << frames[i].getRoll2 << flush;
+					cout << frames[i].getRoll1() << "," << frames[i].getRoll2() << flush;
 				}
 			} 
 		} else {
@@ -118,7 +118,7 @@ void Scoresheet :: print() {
 	for (int i = 0; i < MAXFRAMES; i++) {
 		if (scores[i] != -1) {
 			cout << setw(7) << scores[i] << flush;
-			cout << "\t"
+			cout << "\t" << flush;
 		} else {
 			cout << setw(7) << "_______" << flush;
 			cout << "\t" << flush;
