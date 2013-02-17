@@ -64,6 +64,7 @@ public:
 	
 	// print the scoresheet along with current scores.
 	void print() ;
+	// I am going to create a temporary array and pass it into getScores then just print the information in the array.
 
 	// a unique id assigned to this scoresheet.
 	const int ID;
