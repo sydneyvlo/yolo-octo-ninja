@@ -92,7 +92,7 @@ void Scoresheet :: print() {
 	getScores(scores);
 	
 	for (int i = 1; i < (MAXFRAMES+1); i++) {
-		if (i != MAXFRAMES) {
+		if (i == MAXFRAMES) {
 			cout << "[" << flush;
 			if (frames[i].isOver()) {
 				if (frames[i].bonusSpare()) {
@@ -102,15 +102,17 @@ void Scoresheet :: print() {
 				} else {
 					cout << frames[i].getRoll1() << "," << frames[i].getRoll2() << flush;
 				}
-			} 
+			} else {
+				cout << " , , " << flush;
+			}
 		} else {
 			cout << "[" << flush;
 			if (frames[i].isOver()) {
 				if (frames[i].isStrike()) {
-					cout << setw(5) << "X,  " << flush;
+					cout << left << setw(2) << "X,  " << flush;
 //				cout << "\t" << flush;
 				} else if (frames[i].isSpare()) {
-					cout << setw(5) << frames[i].getRoll1() << ",/" << flush;
+					cout << left << setw(2) << frames[i].getRoll1() << ",/" << flush;
 //				cout << "\t" << flush;
 				} else {
 					cout << setw(5) << frames[i].getRoll1() << "," << frames[i].getRoll2() << flush;
@@ -118,7 +120,7 @@ void Scoresheet :: print() {
 				}
 			} else {
 				if (frames[i].getRoll1() != -1) {
-					cout << setw(5) << frames[i].getRoll1() << ", " << flush;
+					cout << left << setw(2) << frames[i].getRoll1() << ", " << flush;
 				} else {
 					cout << " , " << flush;
 				}
@@ -134,10 +136,12 @@ void Scoresheet :: print() {
 
 	for (int i = 0; i < (MAXFRAMES); i++) {
 		if (scores[i] != -1) {
+			cout << "TESTING" << endl;
+			cout << scores[i];
 			cout << left << setw(7) << scores[i] << flush;
 			cout << "\t" << flush;
 		} else {
-			cout << setw(7) << "_______" << flush;
+			cout << setw(6) << "______" << flush;
 			cout << "\t" << flush;
 		}
 	}
