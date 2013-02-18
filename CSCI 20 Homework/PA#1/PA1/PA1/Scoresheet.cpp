@@ -70,6 +70,17 @@ void Scoresheet :: getScores(int scores[]) {
 				scores[i-1] = -1;
 			}
 		} else {
+			if (frames[i].isOver()) {
+				if (frames[i].bonusStrikes()) {
+					scores[i-1] = frames[i].getPins() + frames[i].getRoll2() + frames[i].getRoll3() + scores[i-2];
+				} else if (frames[i].bonusSpare()) {
+					scores[i-1] = frames[i].getPins() + frames[i].getRoll3() + scores[i-2];
+				} else {
+					scores[i-1] + frames[i].getRoll1() + frames[i].getRoll2() + scores[i-2];
+				}
+			} else {
+				scores[i-1] = -1;
+			}
 			//last frame code goes into here.
 		}
 	}
