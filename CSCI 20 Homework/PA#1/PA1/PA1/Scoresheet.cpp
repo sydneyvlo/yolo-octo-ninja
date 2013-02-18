@@ -32,7 +32,7 @@ void Scoresheet :: getScores(int scores[]) {
 						// The previous frame needs to have a score for any future frame to be scored.
 						if (frames[i-1].getTotal() != -1) {
 							// The current score is dependent on past scores and the rolls of the next frame.
-							scores[i-1] = 10 + frames[i+1].getRoll1() + scores[i-2];
+							scores[i-1] = frames[i].getPins() + frames[i+1].getRoll1() + scores[i-2];
 						} else {
 							scores[i-1] = -1;
 						}
