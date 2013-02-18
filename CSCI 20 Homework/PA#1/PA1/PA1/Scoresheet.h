@@ -77,6 +77,8 @@ public:
 	int getCurrentFrameNum() const; 
 
 private:
+	bool toggle;
+	int *scores; // to keep track of scroe
 	Frame frames[MAXFRAMES+1];  // ignore frames[0]
 
 	// current frame number (1 to MAXFRAMES).
