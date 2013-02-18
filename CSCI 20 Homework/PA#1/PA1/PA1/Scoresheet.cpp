@@ -2,21 +2,69 @@
  #include "Scoresheet.h"
 
 
-//const int Scoresheet::MAXFRAMES;
+//Derricks modified getScore
+
+void Scoresheet :: getScores(int scores[]) {
+	int total = 0;
+	if ( toggle) {
+		for(int i = 1; i < MAXFRAMES; i++) {
+			if(i != (MAXFRAMES +1)) { // not last frame
+				if(frames[i].isSpare()) {
+					if(frames[i+1].getRoll1() != -1) { //check next frame roll 1 check to see if it has anumber // [k, /]
+						total = scores[i-1] + frames[i+1].getRoll1() + frames[i].getPins();
+						scores[i] = total;
+					}
+					else {
+						scores[i] = -1;
+					}
+				}
+				else if (frames[i].isStrike() && (frames[i+1].isStrike() == false || frames[i+1].isLastFrame())) { // need to check if last frame or not [x] [k,k]
+					if ((frames[i+ 1].getRoll1() != -1) &&  (frames[i+1].getRoll2()  != -1 )) {
+						total =  scores[i-1] +  frames[i+1].getRoll1() + frames[i+1].getRoll2() + frames[i].getPins();
+						scores[i] = total;
+					}
+					else {
+						scores[i] = -1;
+					}
+				}
+				else if (frames[i].isStrike() && frames[i+1].isStrike() && i <= MAXFRAMES) { // check ahead if it is strike also // [x] [x] [x]
+					if (frames[i+2].getRoll1() != -1) {
+						total = scores [i-1] + frames[i+1].getRoll1() + frames[i+2].getRoll1() +  frames[i].getPins();
+						scores[i] = total;
+					}
+					else {
+						scores[i] = -1;
+					}
+				}
+				else { // k k
+					if (frames[i].getRoll1() != -1 &&  frames[i].getRoll2() != -1 ) {
+						total =  scores[i-1] + frames[i].getRoll1() +  frames[i].getRoll2();
+						scores[i] = total;
+					}
+					else
+						scores[i] = -1;
+				}
+			}
+		}
+	}
+	if(frames[MAXFRAMES].isOver() && frames[MAXFRAMES].isLastFrame()) {
+		if (frames[MAXFRAMES].getRoll3() == -1) { // change
+		total =  scores[MAXFRAMES-1] + frames[MAXFRAMES].getRoll1() + frames[MAXFRAMES].getRoll2();
+		scores[MAXFRAMES] = total;
+		}
+		else { 
+			total =  scores[MAXFRAMES-1] + frames[MAXFRAMES].getRoll1() + frames[MAXFRAMES].getRoll2() + frames[MAXFRAMES].getRoll3();
+		scores[MAXFRAMES] = total;
+		}
+	}
+	else 
+		scores[MAXFRAMES] = -1;
+}
+
+
+
+
 /***
-Scoresheet :: Scoresheet() : ID(count++) {
-}
-
-Scoresheet :: Scoresheet(const Scoresheet &other) : ID(count++) {
-}
-
-Scoresheet &operator
-***/
-
-
-
-
-
 void Scoresheet :: getScores(int scores[]) {
 	for (int i = 1; i < (MAXFRAMES + 1); i++) {
 		// We treat frames that are not the last frame differently.
@@ -86,6 +134,7 @@ void Scoresheet :: getScores(int scores[]) {
 	}
 }
 
+***/
 void Scoresheet :: print() {
 	int *scores;
 	scores = new int [MAXFRAMES+1];
@@ -98,7 +147,7 @@ void Scoresheet :: print() {
 				if (frames[i].bonusSpare()) {
 					cout << frames[i].getRoll1() << ",/," << frames[i].getRoll3() << flush;
 				} else if (frames[i].bonusStrikes()) {
-					cout << "X,X, " << frames[i].getRoll3() << flush;
+					cout << "X,X," << frames[i].getRoll3() << flush;
 				} else {
 					cout << frames[i].getRoll1() << "," << frames[i].getRoll2() << flush;
 				}
@@ -134,10 +183,8 @@ void Scoresheet :: print() {
 
 	cout << endl;
 
-	for (int i = 0; i < (MAXFRAMES); i++) {
+	for (int i = 1; i < (MAXFRAMES+1); i++) {
 		if (scores[i] != -1) {
-			cout << "TESTING" << endl;
-			cout << scores[i];
 			cout << left << setw(7) << scores[i] << flush;
 			cout << "\t" << flush;
 		} else {
