@@ -115,7 +115,7 @@ void Scoresheet :: print() {
 
 	cout << endl;
 
-	for (int i = 0; i < MAXFRAMES; i++) {
+	for (int i = 0; i < (MAXFRAMES); i++) {
 		if (scores[i] != -1) {
 			cout << setw(7) << scores[i] << flush;
 			cout << "\t" << flush;
@@ -124,6 +124,8 @@ void Scoresheet :: print() {
 			cout << "\t" << flush;
 		}
 	}
+
+	delete scores;
 }
 
 /***
