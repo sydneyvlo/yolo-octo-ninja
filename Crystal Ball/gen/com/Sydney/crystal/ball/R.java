@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.example.crystal.ball;
+package com.Sydney.crystal.ball;
 
 public final class R {
     public static final class attr {

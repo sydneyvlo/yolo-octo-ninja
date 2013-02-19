@@ -1,5 +1,6 @@
-package com.example.crystal.ball;
+package com.Sydney.crystal.ball;
 
+import com.Sydney.crystal.ball.R;
 import java.util.Random;
 
 public class CrystalBall {

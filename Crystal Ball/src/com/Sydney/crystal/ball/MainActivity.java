@@ -1,4 +1,4 @@
-package com.example.crystal.ball;
+package com.Sydney.crystal.ball;
 
 import android.app.Activity;
 import android.graphics.drawable.AnimationDrawable;
@@ -13,7 +13,8 @@ import android.view.animation.AlphaAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.crystal.ball.ShakeDetector.OnShakeListener;
+import com.Sydney.crystal.ball.R;
+import com.Sydney.crystal.ball.ShakeDetector.OnShakeListener;
 
 public class MainActivity extends Activity  { //Activity determines how the front screen will work
 	

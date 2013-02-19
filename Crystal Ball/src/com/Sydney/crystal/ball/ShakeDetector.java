@@ -1,8 +1,9 @@
-package com.example.crystal.ball;
+package com.Sydney.crystal.ball;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import com.Sydney.crystal.ball.R;
 
 public class ShakeDetector implements SensorEventListener {
 
