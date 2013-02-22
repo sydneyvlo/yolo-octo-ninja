@@ -19,25 +19,25 @@ node* insertVal(node *first, int val) {
 	int count = 0;
 	bool inserted = false;
 
-	cout << "1" << endl;
+//	cout << "1" << endl;
 	node *toBeAdded;
 	toBeAdded = new node;
 	toBeAdded->info = val;
 
-	cout << "2" << endl;
+//	cout << "2" << endl;
 	//First node excluding the head. Aliases not creating new nodes.
 	node *placeInList = first->link;
 
-	cout << "3" << endl;
+//	cout << "3" << endl;
 	//Also first node exluding the head. Aliases not creating new nodes.
 	node *prevInList = first->link;
 	
-	cout << "4" << endl;
+//	cout << "4" << endl;
 
 	// If this fails that means the linked list was empty. I just consisted of a headPtr;
 	if (placeInList != NULL) {
 		while (placeInList->link != NULL && !inserted) {
-		cout << "5x" << endl;
+//		cout << "5x" << endl;
 			if (val <= placeInList->info && count == 0) {
 				first->link = toBeAdded;
 				toBeAdded->link = placeInList;
@@ -52,7 +52,7 @@ node* insertVal(node *first, int val) {
 			count++;
 		}
 
-		cout << "5" << endl;
+//		cout << "5" << endl;
 		if (val <= placeInList->info && !inserted) {
 			toBeAdded->link = prevInList->link;
 			prevInList->link = toBeAdded;
