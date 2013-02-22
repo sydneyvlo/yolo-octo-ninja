@@ -1,4 +1,5 @@
 #include <iostream>
+#include <Windows.h>
 using namespace std;
 
 struct node {
@@ -99,30 +100,69 @@ node* removeVal(node* first, int val, int &numRemoved) {
 	// just make the previous node link = NULL
 	if (placeInList->info == val) {
 		prevInList->link = NULL;
+		delete placeInList;
+		numRemoved++;
 	}
 
 	return first;
 }
 
 void print (node* first) {
-	cout << "Greetings from the print function." << endl;
+//	cout << "Greetings from the print function." << endl;
 	node* placeInList = first->link;
-	cout << "We make it here" << endl;
-	while (placeInList->link != NULL) {
-		cout << "Greetings from the while loop in the print function." << endl;
-		cout << "{" << placeInList->info << "}, " << flush;
-		placeInList = placeInList->link;
-	}
+//	cout << "We make it here" << endl;
+	if (placeInList != NULL) {
+		cout << "[" << flush;
+		while (placeInList->link != NULL) {
+//			cout << "Greetings from the while loop in the print function." << endl;
+			cout << "{" << placeInList->info << "}, " << flush;
+			placeInList = placeInList->link;
+		}
 
-	cout << "{" << placeInList->info << "}" << endl;
+	cout << "{" << placeInList->info << "}" << flush;
+	cout << "]" << endl;
+	
+	} else {
+		cout << "[]" << endl;
+	}
 }
 
 int main() {
+	int numRemoved = 0;
 	node* testNode;
 	testNode = new node;
 	testNode->link = NULL;
 
+	cout << "Testing in: " << flush;
+	for (int i = 1; i <=3; i++) {
+		cout << i << " " << flush;
+		Sleep(1000);
+	}
+
+	cout << endl << "Goooooooooooooooo!" << endl;
+
+	Sleep(2000);
+	cout << endl;
+
+	//Testing Print
+	cout << "Should print out two empty braces." << endl;
+	print(testNode);
+	cout << endl;
+
+	// Testing insertVal
+	cout << "Inserting a 5." << endl;
 	insertVal(testNode, 5);
-	cout << "Before the print function call." << endl;
+	print(testNode);
+	cout << endl;
+
+	cout << "Inserting another 5." << endl;
+	insertVal(testNode, 5);
+	print(testNode);
+	cout << endl;
+
+	cout << "Inserting numbers 1 to 10." << endl;
+	for (int i = 1; i <= 10; i++) {
+		insertVal(testNode, i);
+	}
 	print(testNode);
 }
