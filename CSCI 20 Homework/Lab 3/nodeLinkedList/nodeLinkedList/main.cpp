@@ -261,6 +261,23 @@ int findMin(node* first, bool &success) {
 	return currentMinVal;
 }
 
+node* removeMin(node* first, bool &success) {
+	int minValue;
+	int numRemoved;
+	bool testSuccess;
+	minValue = findMin(first, testSuccess);
+
+	if (testSuccess) {
+		removeVal(first, minValue, numRemoved);
+		success = true;
+	} else {
+		success = false;
+	}
+
+	return first;
+
+}
+
 int main() {
 	int numRemoved = 0;
 	node* testNode;
@@ -393,6 +410,22 @@ int main() {
 	cout << findMin(testNode5, success) << endl;
 	if (success) {
 		cout << "true" << endl;
+	}
+
+	print(testNode5);
+	cout << "Going to remove the smallest value from the list above." << endl;
+	removeMin(testNode5, success);
+	if (success) {
+		cout << "true" << endl;
+		print(testNode5);
+	}
+
+	cout << "testing with an empty node" << endl;
+	node* testNode100 = createNode();
+	removeMin(testNode100, success);
+	if (!success) {
+		cout << "false" << endl;
+		print(testNode100);
 	}
 
 }
