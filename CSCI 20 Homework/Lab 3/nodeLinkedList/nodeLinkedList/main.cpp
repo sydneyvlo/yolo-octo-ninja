@@ -309,10 +309,16 @@ int main() {
 	insertSortedArray(testNode3, anArray2, 3);
 	print(testNode3);
 
+	cout << "Copying the above list." << endl;
+	node* testNode4 = copyList(testNode3);
+	print(testNode4);
+
 	cout << "Print the above node in reverse order." << endl;
 	reversePrint(testNode3);
 
 	cout << "Deleteing the above linked-list and going to print it." << endl;
 	clear(testNode3);
 	print(testNode3);
+
+
 }
