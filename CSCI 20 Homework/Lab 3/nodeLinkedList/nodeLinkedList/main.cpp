@@ -191,7 +191,7 @@ void reversePrint(node* first) {
 		cout << "[" << flush;
 		for (int i = temp.size() - 1; i >= 0; i--) {
 			if (i == 0) {
-				cout << "{" << temp[i] << "}" << endl;
+				cout << "{" << temp[i] << "}";
 			} else {
 				cout << "{" << temp[i] << "}," << flush;
 			}
@@ -292,6 +292,9 @@ int main() {
 	cout << "Inserting an array of values 1-6 evens." << endl;
 	insertSortedArray(testNode3, anArray2, 3);
 	print(testNode3);
+
+	cout << "Print the above node in reverse order." << endl;
+	reversePrint(testNode3);
 
 	cout << "Deleteing the above linked-list and going to print it." << endl;
 	clear(testNode3);
