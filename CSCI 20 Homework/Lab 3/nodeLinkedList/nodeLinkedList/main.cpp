@@ -229,8 +229,21 @@ int main() {
 	insertVal(testNode2, 2);
 	temp = findVal(2, testNode2);
 	cout << "Should return a node with info 1." << endl;
-	cout << "Node's info is: " << temp->info << endl;
+	cout << "Node's info is: " << temp->info << endl << endl;
 
-	node* testNode3;
+	node* testNode3 = createNode();
+	cout << "Printing an empty node." << endl;
+	print(testNode3);
+
+	int anArray[] = {1, 3, 5};
+
+	cout << "Inserting an array of values 1-6. odds." << endl;
+	insertSortedArray(testNode3, anArray, 3);
+	print(testNode3);
+
+	int anArray2[] = {2, 4, 6};
+	cout << "Inserting an array of values 1-6 evens." << endl;
+	insertSortedArray(testNode3, anArray2, 3);
+	print(testNode3);
 
 }
