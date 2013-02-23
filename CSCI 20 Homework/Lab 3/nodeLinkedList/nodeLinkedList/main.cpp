@@ -131,6 +131,24 @@ void print (node* first) {
 	}
 }
 
+node* findVal(int val, node* first) {
+	node* prevInList = first->link;
+	node* placeInList = first->link;
+
+	while(val > placeInList->info && placeInList->link != NULL) {
+		prevInList = placeInList;
+		placeInList = placeInList->link;
+	}
+
+	if (val >= placeInList->link->info) {
+	
+	}
+
+	return first;
+
+}
+
+
 int main() {
 	int numRemoved = 0;
 	node* testNode;
@@ -176,4 +194,9 @@ int main() {
 	removeVal(testNode, 5, numRemoved);
 	print(testNode);
 	cout << "numRemoved should equal 3: " << numRemoved << endl;
+
+	cout << "Removing the last node 10." << endl;
+	removeVal(testNode, 10, numRemoved);
+	print(testNode);
+	cout << "numRemoved should equal 4: " << numRemoved << endl;
 }
