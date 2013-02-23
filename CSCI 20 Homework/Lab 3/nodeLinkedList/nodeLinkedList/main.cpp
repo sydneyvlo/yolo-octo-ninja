@@ -140,11 +140,13 @@ node* findVal(int val, node* first) {
 		placeInList = placeInList->link;
 	}
 
-	if (val >= placeInList->link->info) {
-	
+	if (placeInList->link == NULL) {
+		if (val > placeInList->info) {
+			return placeInList;
+		}
+	} else {
+		return prevInList;
 	}
-
-	return first;
 
 }
 
