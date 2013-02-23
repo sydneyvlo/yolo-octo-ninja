@@ -204,6 +204,22 @@ void reversePrint(node* first) {
 
 }
 
+node* copyList(node* first) {
+	node*temp = createNode();
+	node* placeInList = first->link;
+
+	if (placeInList != NULL) {
+		while(placeInList->link != NULL) {
+			insertVal(temp, placeInList->info);
+			placeInList = placeInList->link;
+		}
+
+		insertVal(temp, placeInList->info);
+	}
+
+	return temp;
+}
+
 
 int main() {
 	int numRemoved = 0;
