@@ -237,6 +237,30 @@ node* merge(node* dest, node*source) {
 	return dest;
 }
 
+int findMin(node* first, bool &success) {
+	node* placeInList = first->link;
+	int currentMinVal;
+
+	if (placeInList != NULL) {
+		success = true;
+		currentMinVal = placeInList->info;
+		placeInList = placeInList->link;
+
+		while (placeInList->link != NULL) {
+			if (placeInList->info < currentMinVal) {
+				currentMinVal = placeInList->info;
+			}
+
+			placeInList = placeInList->link;
+		}
+	} else {
+		success = false;
+		currentMinVal = 0;
+	}
+
+	return currentMinVal;
+}
+
 int main() {
 	int numRemoved = 0;
 	node* testNode;
@@ -355,7 +379,5 @@ int main() {
 	cout << "Merging testNode6 into testNode5." << endl;
 	merge(testNode5, testNode6);
 	print(testNode5);
-
-
 
 }
