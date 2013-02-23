@@ -221,6 +221,22 @@ node* copyList(node* first) {
 }
 
 
+//precondition: Assume dest is ascending order
+node* merge(node* dest, node*source) {
+	node* placeInSource = source->link;
+
+	if (placeInSource != NULL) {
+		while (placeInSource->link != NULL) {
+			insertVal(dest, placeInSource->info);
+			placeInSource = placeInSource->link;
+		}
+
+		insertVal(dest, placeInSource->info);
+	}
+
+	return dest;
+}
+
 int main() {
 	int numRemoved = 0;
 	node* testNode;
@@ -319,6 +335,27 @@ int main() {
 	cout << "Deleteing the above linked-list and going to print it." << endl;
 	clear(testNode3);
 	print(testNode3);
+
+	node* testNode5 = createNode();
+	node* testNode6 = createNode();
+	int anArray3[] = {6, 8, 10};
+	int anArray4[] = {5, 7, 9};
+
+	insertSortedArray(testNode5, anArray3, 3);
+	insertSortedArray(testNode6, anArray4, 3);
+
+	cout << "testNode5" << endl;
+	print(testNode5);
+	cout << endl;
+
+	cout << "testNode6" << endl;
+	print(testNode6);
+	cout << endl;
+
+	cout << "Merging testNode6 into testNode5." << endl;
+	merge(testNode5, testNode6);
+	print(testNode5);
+
 
 
 }
