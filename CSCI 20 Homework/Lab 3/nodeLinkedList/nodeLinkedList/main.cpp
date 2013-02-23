@@ -11,6 +11,7 @@ node* createNode(int val = 0) {
 	node *temp;
 	temp = new node;
 	temp->info = val;
+	temp->link = NULL;
 	return temp;
 }
 
@@ -150,6 +151,14 @@ node* findVal(int val, node* first) {
 
 }
 
+node* insertSortedArray(node* first, int nums[], int length) {
+	for (int i = 0; i < length; i++) {
+		insertVal(first, nums[i]);
+	}
+
+	return first;
+}
+
 
 int main() {
 	int numRemoved = 0;
@@ -221,4 +230,7 @@ int main() {
 	temp = findVal(2, testNode2);
 	cout << "Should return a node with info 1." << endl;
 	cout << "Node's info is: " << temp->info << endl;
+
+	node* testNode3;
+
 }
