@@ -43,8 +43,12 @@ node* insertVal(node *first, int val) {
 				toBeAdded->link = placeInList;
 				inserted = true;
 			} else if (val <= placeInList->info) {
-				toBeAdded->link = placeInList->link;
-				placeInList->link = toBeAdded;
+				cout << val << endl;
+				cout << placeInList->info << endl;
+				cout << "2 should be added here" << endl;
+				prevInList->link = toBeAdded;
+				toBeAdded->link = placeInList;
+//				placeInList->link = toBeAdded;
 				inserted = true;
 			}
 			prevInList = placeInList;
@@ -163,6 +167,13 @@ int main() {
 	cout << "Inserting numbers 1 to 10." << endl;
 	for (int i = 1; i <= 10; i++) {
 		insertVal(testNode, i);
+//		print(testNode);
 	}
+	
 	print(testNode);
+
+	cout << "Removing all instances of 5." << endl;
+	removeVal(testNode, 5, numRemoved);
+	print(testNode);
+	cout << "numRemoved should equal 3: " << numRemoved << endl;
 }
