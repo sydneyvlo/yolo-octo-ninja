@@ -162,15 +162,17 @@ node* insertSortedArray(node* first, int nums[], int length) {
 node* clear(node* first) {
 	node* placeInList = first->link;
 	node* toBeDeleted;
-
-	while (placeInList->link != NULL) {
-		toBeDeleted = placeInList;
-		placeInList = placeInList->link;
-		delete toBeDeleted;
+	first->link = NULL;
+	if (placeInList != NULL) {
+		while (placeInList->link != NULL) {
+			toBeDeleted = placeInList;
+			placeInList = placeInList->link;
+			delete toBeDeleted;
+		}
+		
+		delete placeInList;
 	}
-
-	delete placeInList;
-
+	
 	return first;
 }
 
@@ -246,7 +248,9 @@ int main() {
 	cout << "Should return a node with info 1." << endl;
 	cout << "Node's info is: " << temp->info << endl << endl;
 
-	node* testNode3 = createNode();
+	node* testNode3;
+	testNode3 = new node;
+	testNode3->link = NULL;
 	cout << "Printing an empty node." << endl;
 	print(testNode3);
 
@@ -261,4 +265,7 @@ int main() {
 	insertSortedArray(testNode3, anArray2, 3);
 	print(testNode3);
 
+	cout << "Deleteing the above linked-list and going to print it." << endl;
+	clear(testNode3);
+	print(testNode3);
 }
