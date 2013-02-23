@@ -159,6 +159,21 @@ node* insertSortedArray(node* first, int nums[], int length) {
 	return first;
 }
 
+node* clear(node* first) {
+	node* placeInList = first->link;
+	node* toBeDeleted;
+
+	while (placeInList->link != NULL) {
+		toBeDeleted = placeInList;
+		placeInList = placeInList->link;
+		delete toBeDeleted;
+	}
+
+	delete placeInList;
+
+	return first;
+}
+
 
 int main() {
 	int numRemoved = 0;
