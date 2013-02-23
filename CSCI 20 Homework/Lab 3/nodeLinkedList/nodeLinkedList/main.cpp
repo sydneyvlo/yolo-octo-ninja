@@ -380,4 +380,19 @@ int main() {
 	merge(testNode5, testNode6);
 	print(testNode5);
 
+	node* testNode7 = createNode();
+	bool success;
+	cout << "findMin should return 0 and success should be false." << endl;
+	cout << findMin(testNode7, success) << endl;
+	if (!success) {
+		cout << "false" << endl;
+	}
+
+	print(testNode5);
+	cout << "findMin should return the lowest value from the above list." << endl;
+	cout << findMin(testNode5, success) << endl;
+	if (success) {
+		cout << "true" << endl;
+	}
+
 }
