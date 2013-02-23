@@ -141,7 +141,7 @@ int main() {
 	for (int i = 1; i <=3; i++) {
 		cout << i << " " << flush;
 		Sleep(1000);
-	}asdf
+	}
 
 	cout << endl << "Goooooooooooooooo!" << endl;
 
