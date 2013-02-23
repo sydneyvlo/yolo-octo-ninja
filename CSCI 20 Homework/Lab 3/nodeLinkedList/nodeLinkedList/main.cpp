@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Windows.h>
+#include <vector>
 using namespace std;
 
 struct node {
@@ -174,6 +175,33 @@ node* clear(node* first) {
 	}
 	
 	return first;
+}
+
+void reversePrint(node* first) {
+	vector<int> temp;
+	node* placeInList = first->link;
+	
+	if (placeInList != NULL) {
+		while(placeInList->link != NULL) {
+			temp.push_back(placeInList->info);
+			placeInList = placeInList->link;
+		}
+
+		temp.push_back(placeInList->info);
+		cout << "[" << flush;
+		for (int i = temp.size() - 1; i >= 0; i--) {
+			if (i == 0) {
+				cout << "{" << temp[i] << "}" << endl;
+			} else {
+				cout << "{" << temp[i] << "}," << flush;
+			}
+		}
+
+		cout << "]" << endl;
+	} else {
+		cout << "[]" << endl;
+	}
+
 }
 
 
