@@ -43,9 +43,9 @@ node* insertVal(node *first, int val) {
 				toBeAdded->link = placeInList;
 				inserted = true;
 			} else if (val <= placeInList->info) {
-				cout << val << endl;
-				cout << placeInList->info << endl;
-				cout << "2 should be added here" << endl;
+//				cout << val << endl;
+//				cout << placeInList->info << endl;
+//				cout << "2 should be added here" << endl;
 				prevInList->link = toBeAdded;
 				toBeAdded->link = placeInList;
 //				placeInList->link = toBeAdded;
@@ -201,4 +201,24 @@ int main() {
 	removeVal(testNode, 10, numRemoved);
 	print(testNode);
 	cout << "numRemoved should equal 4: " << numRemoved << endl;
+
+	node* testNode2;
+	testNode2 = new node;
+	testNode2->link = NULL;
+	node *temp;
+	insertVal(testNode2, 1);
+	insertVal(testNode2, 3);
+	insertVal(testNode2, 4);
+	temp = findVal(2, testNode2);
+	cout << "Should return a node with info 1." << endl;
+	cout << "Node's info is: " << temp->info << endl;
+
+	temp = findVal(5, testNode2);
+	cout << "Should return a node with info 4." << endl;
+	cout << "Node's info is: " << temp->info << endl;
+
+	insertVal(testNode2, 2);
+	temp = findVal(2, testNode2);
+	cout << "Should return a node with info 1." << endl;
+	cout << "Node's info is: " << temp->info << endl;
 }
