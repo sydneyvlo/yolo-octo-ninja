@@ -18,7 +18,7 @@ struct node  {
 void inorderTraversal(node  * p);   // print node data in order
 void preorderTraversal(node  * p);  // print node data pre order
 void postorderTraversal(node * p);  // print node data post order
-void levelorderTraversal(node * p); // level order
+ // level order
 //int leafCount(node * p);  // return number of leaves in p
 //int height(node * p);  // return height of p
 //string longestPath(node * p);  // most number of edges between p and a leaf
@@ -36,19 +36,15 @@ node *  addTrees(node * leftT, node * rightT, char c);   // create a new tree wi
 
 
 int main() {
-    cout << "Pick a seed for random number generator, or 0 for time(0): ";
-    int seed;
-    cin >> seed;
-    srand(seed >= 0 ? seed : (unsigned int)(time(0))); 
 
     bool done = false;
     while (!done) {
         int maxHeight;
         cout << "maximum height? (or -2 to quit): ";
         cin >> maxHeight;
-        if (maxHeight < -1)
+        if (maxHeight < -1) {
             done = true;
- else {  
+		} else {  
           node * p = makeARandomTree(maxHeight);
 //         drawTree(p, maxHeight > 4);  // used condensed spacing if maxHeight > 5
  
@@ -56,14 +52,15 @@ int main() {
 //          cout << "\tHeight = " << height(p ) << ", Leafcount = "
 //               << leafCount(p) <<  ", NodeCount = " << nodeCount(p) << endl;
  
-//          cout <<    endl << "\tPre Order:     < ";
-//          preorderTraversal(p);
-//          cout << ">" << endl << endl << "\tIn Order:      < ";
-//          inorderTraversal(p);
-//          cout << ">" << endl <<endl <<  "\tPost Order:    < ";
+          cout <<    endl << "\tPre Order:     < ";
+          preorderTraversal(p);
+          cout << ">" << endl << endl << "\tIn Order:      < ";
+          inorderTraversal(p);
+          cout << ">" << endl; // <<endl <<  "\tPost Order:    < ";
 //          postorderTraversal(p);
-          cout << ">" << endl <<endl <<  "\tLevel Order:   < ";
-//          levelorderTraversal(p);
+//          cout << "> 
+		  cout << endl << endl <<  "\tLevel Order:   < ";
+          levelorderTraversal(p);
           cout << ">" << endl << endl;
  
 //          cout << "\tShortest Path: < " << shortestPath(p) << ">" << endl << endl;
@@ -100,4 +97,12 @@ void postorderTraversal(node *p) {
 	postorderTraversal(p->right);
 	postorderTraversal(p->left);
 	cout << p->info << flush;
+}
+
+node *  addTrees(node * leftT, node * rightT, char c) {
+	
+}
+
+void levelorderTraversal(node * p) {
+
 }
