@@ -4,6 +4,7 @@
 #include <cmath>
 #include <string>
 #include <queue>
+#include <stack>
 using namespace std;
 
 
@@ -121,5 +122,7 @@ node *  addTrees(node * leftT, node * rightT, char c) {
 }
 
 void levelorderTraversal(node * p) {
+	std::queue <char> aQueue;
+	std::stack <char> aStack;
 
 }
