@@ -4,6 +4,8 @@
 #include <cmath>
 #include <string>
 #include <queue>
+#include <Windows.h>
+#include <conio.h>
 #include <stack>
 using namespace std;
 
@@ -122,7 +124,35 @@ node *  addTrees(node * leftT, node * rightT, char c) {
 }
 
 void levelorderTraversal(node * p) {
-	std::queue <char> aQueue;
+	std::queue <node*> aQueue;
 	std::stack <char> aStack;
+
+	if (p != NULL) {
+		aQueue.push(p);
+		while (!aQueue.empty()) {
+			p = aQueue.front();
+			node *temp = new node;
+			temp = aQueue.front();
+			aStack.push(temp->info);
+			if (p->right != NULL) {
+//				cout << "1" << endl;
+//				Sleep(2000);
+				aQueue.push(p->right);
+			}
+
+			if (p->left != NULL) {
+//				cout << "2" << endl;
+//				Sleep(2000);
+				aQueue.push(p->left);
+			}
+
+			aQueue.pop();
+		}
+	}
+
+	while(!aStack.empty()) {
+		cout << aStack.top() << flush;
+		aStack.pop();
+	}
 
 }
