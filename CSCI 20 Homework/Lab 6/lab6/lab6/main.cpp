@@ -18,7 +18,7 @@ struct node  {
 void inorderTraversal(node  * p);   // print node data in order
 void preorderTraversal(node  * p);  // print node data pre order
 void postorderTraversal(node * p);  // print node data post order
- // level order
+void levelorderTraversal(node * p); // level order
 //int leafCount(node * p);  // return number of leaves in p
 //int height(node * p);  // return height of p
 //string longestPath(node * p);  // most number of edges between p and a leaf
@@ -52,14 +52,14 @@ int main() {
 //          cout << "\tHeight = " << height(p ) << ", Leafcount = "
 //               << leafCount(p) <<  ", NodeCount = " << nodeCount(p) << endl;
  
-          cout <<    endl << "\tPre Order:     < ";
+          cout <<    endl << "\tPre Order:     <";
           preorderTraversal(p);
-          cout << ">" << endl << endl << "\tIn Order:      < ";
+          cout << ">" << endl << endl << "\tIn Order:      <";
           inorderTraversal(p);
           cout << ">" << endl; // <<endl <<  "\tPost Order:    < ";
 //          postorderTraversal(p);
 //          cout << "> 
-		  cout << endl << endl <<  "\tLevel Order:   < ";
+		  cout << endl << endl <<  "\tLevel Order:   <";
           levelorderTraversal(p);
           cout << ">" << endl << endl;
  
@@ -87,20 +87,37 @@ node * makeARandomTree(int height) {
 }
 
 void preorderTraversal(node *p) {
-	cout << p->info << flush;
-	preorderTraversal(p->left);
-	preorderTraversal(p->right);
+	if (p != NULL) {
+		cout << p->info << flush;
+		preorderTraversal(p->left);
+		preorderTraversal(p->right);
+	}
 }
 
 
 void postorderTraversal(node *p) {
-	postorderTraversal(p->right);
-	postorderTraversal(p->left);
-	cout << p->info << flush;
+	if (p != NULL) {
+		postorderTraversal(p->right);
+		postorderTraversal(p->left);
+		cout << p->info << flush;
+	}
+}
+
+void inorderTraversal(node  * p) {
+	if (p != NULL) {
+		inorderTraversal(p->left);
+		cout << p->info << flush;
+		inorderTraversal(p->right);
+	}
 }
 
 node *  addTrees(node * leftT, node * rightT, char c) {
-	
+	node *newTree;
+	newTree = new node;
+	newTree->info = c;
+	newTree->left = leftT;
+	newTree->right = rightT;
+	return newTree;
 }
 
 void levelorderTraversal(node * p) {
