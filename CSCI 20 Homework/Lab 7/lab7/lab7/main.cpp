@@ -7,14 +7,17 @@ struct node {
 	node *right;
 };
 
+node *find (int n, node *root);
+
 int main() {
-	node *treeRoot;
-	node *child1;
-	node *child11;
-	node *child12;
-	node *child2;
-	node *child21;
-	node *child22;
+	node *treeRoot = new node;
+	node *child1 = new node;
+	node *child11 = new node;
+	node *child12 = new node;
+	node *child2 = new node;
+	node *child21 = new node;
+	node *child22 = new node;
+	node *temp;
 
 	//////////////// 25 ///////////////
 	//      20               15
@@ -48,8 +51,33 @@ int main() {
 	child21->left = NULL; // means they are leaves.
 	child22->right = NULL;
 
-
-	
-
-
+	cout << "n = 20" << endl;
+	temp = find(20, treeRoot);
+	cout << "The node should contain the value: " << temp->info << endl << endl;
 }
+
+node *find (int n, node *root) {
+	if (n == root->info) {
+		return root;
+	}
+
+	if (root == NULL) {
+		return root;
+	}
+
+	if (n < root->left->info && n < root->right->info) {
+		node *temp = find(n, root->left);
+		if (temp == NULL) {
+			return find(n, root->right);
+		} else {
+			return temp;
+		}
+	} else {
+		if (n <= root->left->info) {
+			return find(n, root->left);
+		} else if (n <= root->right->info) {
+			return find(n, root->right);
+		}
+	}
+}
+
