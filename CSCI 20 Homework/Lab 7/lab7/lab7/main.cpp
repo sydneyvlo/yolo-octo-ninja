@@ -1,4 +1,6 @@
 #include <iostream>
+#include <stack>
+#include <queue>
 using namespace std;
 
 struct node {
@@ -71,6 +73,7 @@ int main() {
 }
 
 node *find (int n, node *root) {
+/***
 	if (n == root->info) {
 		return root;
 	}
@@ -95,6 +98,8 @@ node *find (int n, node *root) {
 		return find(n, root->left);
 	}
 
+***/
+
 /***
 	if (n < root->left->info && n < root->right->info) {
 //		node *temp = find(n, root->left);
@@ -111,5 +116,37 @@ node *find (int n, node *root) {
 		}
 	}
 ***/
+
+	std::queue <node*> aQueue;
+	std::stack <char> aStack;
+
+	if (p != NULL) {
+		aQueue.push(p);
+		while (!aQueue.empty()) {
+			p = aQueue.front();
+			node *temp = new node;
+			temp = aQueue.front();
+			aStack.push(temp->info);
+			if (p->right != NULL) {
+//				cout << "1" << endl;
+//				Sleep(2000);
+				aQueue.push(p->right);
+			}
+
+			if (p->left != NULL) {
+//				cout << "2" << endl;
+//				Sleep(2000);
+				aQueue.push(p->left);
+			}
+
+			aQueue.pop();
+		}
+	}
+
+	while(!aStack.empty()) {
+		cout << aStack.top() << flush;
+		aStack.pop();
+	}
+
 }
 
