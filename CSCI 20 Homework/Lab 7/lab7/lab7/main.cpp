@@ -53,7 +53,21 @@ int main() {
 
 	cout << "n = 20" << endl;
 	temp = find(20, treeRoot);
-	cout << "The node should contain the value: " << temp->info << endl << endl;
+	cout << "The node should contain the value 20: " << temp->info << endl << endl;
+
+	//Bug. It returns 25
+//	cout << "n = 30" << endl;
+//	temp = find(30, treeRoot);
+//	cout << "The node should contain the value NULL: " << temp->info << endl << endl;
+
+	cout << "n = 18" << endl;
+	temp = find(18, treeRoot);
+	cout << "The node should contain the value 18: " << temp->info << endl << endl;
+
+	cout << "n = 9" << endl;
+	temp = find(9, treeRoot);
+	cout << "The node should contain the value 9: " << temp->info << endl << endl;
+
 }
 
 node *find (int n, node *root) {
@@ -65,12 +79,29 @@ node *find (int n, node *root) {
 		return root;
 	}
 
-	if (n < root->left->info && n < root->right->info) {
-		node *temp = find(n, root->left);
-		if (temp == NULL) {
+	if (n == root->left->info) {
+		return root->left;
+	} else if (n == root->right->info) {
+		return root->right;
+	} else if (n < root->right->info && root->left->info) {
+		if (find(n, root->left) == NULL) {
 			return find(n, root->right);
 		} else {
-			return temp;
+			return find(n, root->left);
+		}
+	} else if (n < root->right->info) {
+		return find(n, root->right);
+	} else {
+		return find(n, root->left);
+	}
+
+/***
+	if (n < root->left->info && n < root->right->info) {
+//		node *temp = find(n, root->left);
+		if (find(n, root->left) == NULL) {
+			return find(n, root->right);
+		} else {
+			return root->left;
 		}
 	} else {
 		if (n <= root->left->info) {
@@ -79,5 +110,6 @@ node *find (int n, node *root) {
 			return find(n, root->right);
 		}
 	}
+***/
 }
 
