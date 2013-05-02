@@ -76,6 +76,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="isComplete.cpp" />
+    <ClCompile Include="helperFunctions.cpp" />
+    <ClCompile Include="test2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="helperFunctions.h" />
+    <ClInclude Include="isComplete.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
