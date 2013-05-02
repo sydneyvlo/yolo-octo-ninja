@@ -9,5 +9,6 @@ struct node  {
 
 int height(node *tree);
 bool isLeaf(node *tree);
+bool isFullTree(node *tree);
 
 #endif;

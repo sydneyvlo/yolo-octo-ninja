@@ -1,7 +1,8 @@
 #include <iostream>
+#include "helperFunctions.h"
 #include "isComplete.h"
 using namespace std;
 
 bool isComplete(node *tree) {
-	return true;
+	int treeHeight = height(tree);
 }
