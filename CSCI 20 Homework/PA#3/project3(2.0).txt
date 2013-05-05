@@ -1,0 +1,321 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <cmath>
+#include <string>
+#include <queue>
+using namespace std;
+ 
+struct node  {
+    char info;
+    node *left;
+    node *right;
+};
+
+bool isLeaf(node *tree) {
+ if (tree->left == NULL && tree->right == NULL) {
+  return true;
+ } else {
+  return false;
+ }
+}
+
+int nodeCount(node * p){
+    if(p== NULL) return 0;
+    else {
+        int count = 1;
+        count += nodeCount(p->left);
+        count += nodeCount(p->right);
+
+        return count;
+    }
+}
+
+
+void deleteTree(node * p) {
+    if ( p == NULL) return;
+    if ( p->left != NULL) deleteTree(p->left);
+    if ( p->right != NULL) deleteTree(p->right);
+    delete p;
+}
+
+node *  addTrees(node * leftT, node * rightT, char c) {
+    node * root = new node;
+    root->info = c;
+    root->left = leftT;
+    root->right = rightT;
+    return root;
+}
+node * makeARandomTree(int height) {
+
+    if (height < 0) return NULL;
+
+    node * p = rand() % 5 != 0 ? makeARandomTree(height-1) : NULL;
+    node * q = rand() % 5 != 0 ? makeARandomTree(height-1) : NULL;
+ 
+    return addTrees(p,q, char('A' + rand() % ('Z' - 'A' + 1)));
+}
+
+void preorderTraversal(node  * p) {
+    if (p != NULL) {
+        cout << p->info << " ";
+        preorderTraversal(p->left);
+        preorderTraversal(p->right);
+    }
+}
+
+void inorderTraversal(node * p) {
+    if(p != NULL) {
+        preorderTraversal(p->left);
+        cout << p->info << " ";
+        preorderTraversal(p->right);
+    }
+}
+
+void postorderTraversal(node * p) { // print node data post order
+    if(p != NULL) {
+        postorderTraversal(p->left);
+        postorderTraversal(p->right);
+        cout << p->info << " " ;
+    }
+}
+
+void levelorderTraversal(node * p ) {
+    queue <node*> q;
+
+    if( p != NULL)  // p = root
+        q.push(p);
+    while(!q.empty()) { // traverse it from top to bottom / right to left
+        p = q.front();
+        cout << p->info << " ";
+        if (p->left != NULL)
+            q.push(p->left);
+        if (p->right != NULL)
+            q.push(p->right);
+        q.pop();
+    }
+    // pop till stack is empty
+}
+
+bool isComplete(node * p) {
+    queue <node *> q;
+
+    bool leaf = false;
+    if(p == NULL) {
+        return true;
+    }
+    else {
+        q.push(p);
+    }
+    while(!q.empty()) {
+        p = q.front();
+        if(p->left == NULL && p->right != NULL ) {
+            return false;
+        }
+        if(leaf && p->left != NULL && p->right == NULL ) {
+            return false;
+        }
+        if(isLeaf(p)) {
+            leaf = true;
+        }
+        if (leaf && p->left != NULL && p->right == NULL) {
+            return true;
+        }
+        if (p->left != NULL)
+            q.push(p->left);
+        if (p->right != NULL)
+            q.push(p->right);
+        q.pop();
+    }
+    return true;
+}
+int leafCount(node * p) {
+    //base case
+    if(p == NULL) {
+        return 0;
+    }
+    if(p->left == NULL && p->right == NULL) {
+        return 1;
+    }
+    return leafCount(p->left) + leafCount(p->right);
+}
+
+int height(node * p) {
+    // root that is not a null = 0
+    if( p == NULL) return -1;
+    int hLeft = height(p->left);
+    int hRight = height(p->right);
+
+    if(hLeft > hRight) return hLeft + 1;
+    else return hRight + 1;
+}
+
+bool isFull(node * p) {
+    double totalNodes = nodeCount(p);
+    double h = height(p) + 1;
+	
+	double total = pow(2,h) - 1;
+    if(total == totalNodes) return true;
+    else return false;
+}
+
+
+ // most number of edges between p and a leaf
+string longestPath(node * p) {
+    string lp = "";
+    if(p == NULL) return lp;
+
+    int h1 = height(p->right);
+    int h2 = height(p->left);
+
+    if(h1>h2) return p->info + longestPath(p->right);
+    else return p->info + longestPath(p->left);
+}
+
+// least number of edges between p and a leaf
+string shortestPath(node * p) {
+    string sp = "";
+	if(p == NULL) return sp;
+
+	int h1 = height(p->right);
+    int h2 = height(p->left);
+
+    if(h1>h2) return p->info + shortestPath(p->right);
+	else return p->info + shortestPath(p->left);
+	
+}
+
+
+// draw the tree. Use condensed spacing if condense == true.
+void drawTree(node * p, bool condense, int maxH) {
+	double h = double(height(p)); 
+
+	double currentLevel = double(maxH) - double(h);
+	static double count = 0;
+	count++;
+	if(!condense) {
+		if (p == NULL) { // height always return -1 ( wrong current level for that node)
+			for(double i = 1; i < pow(2,count); i++) {
+				cout << " ";
+			}
+			for(double i = 0; i < pow(2,count); i++) {
+				cout << "`";
+			}
+			cout << endl;
+		}
+		else {
+		
+			for(double i = 1; i < pow(2,currentLevel); i++) {
+				cout << " ";
+			}
+			for(double i = 0; i < pow(2,currentLevel); i++) {
+				cout << "`";
+			}
+			cout << p->info << endl;
+
+			if(isLeaf(p)) {
+				for(int n = 0; n < 2; n++) {
+					for(double i = 1; i < pow(2,currentLevel+1); i++) {
+						cout << " ";
+					}
+					for(double i = 0; i < pow(2,currentLevel+1); i++) {
+						cout << "`";
+					}
+					cout << endl;
+				}
+			}
+
+			if(!(p->left == NULL && p->right == NULL)) {
+				 drawTree(p->left, condense, maxH);
+				 drawTree(p->right, condense, maxH);
+			}
+		}
+	}
+	//condense
+	else {
+		if (p == NULL) { // height always return -1 ( wrong current level for that node)
+			for(double i = 1; i < count; i++) {
+				cout << " ";
+			}
+			cout << "`" << endl;
+		}
+		else {
+			for(double i = 1; i < currentLevel+1; i++) {
+				cout << " ";
+			}
+			cout  << "`" << p->info << endl;
+
+			if(isLeaf(p)) {
+				for(int n = 0; n < 2; n++) {
+					for(double i = 1; i < currentLevel+1; i++) {
+						cout << " ";
+					}
+						cout << "`" << endl;
+				}
+			}
+			if(!(p->left == NULL && p->right == NULL)) {
+				 drawTree(p->left, condense, maxH);
+				 drawTree(p->right, condense, maxH);
+			}
+		}
+	}
+	count = 0;
+}
+
+int main() {
+    cout << "Pick a seed for random number generator, or 0 for time(0): ";
+    int seed;
+    cin >> seed;
+    srand(seed >= 0 ? seed : (unsigned int)(time(0))); 
+
+    cout << "Execute memory leak test? (y/n): ";
+    char response;
+    cin >> response;
+    if (response == 'y') {
+        cout << "Starting memory leak test " << endl;
+        for (int i = 0; i < 50; i++) {       
+            node * p = makeARandomTree(30);    
+            deleteTree(p); 
+        }
+        cout << "Done with memory leak test " << endl;
+    }
+    bool done = false;
+    while (!done) {
+        int maxHeight;
+        cout << "maximum height? (or -2 to quit): ";
+        cin >> maxHeight;
+        if (maxHeight < -1)
+            done = true;
+
+     else {  
+          node * p = makeARandomTree(maxHeight);
+		  int h = height(p);
+
+          drawTree(p, maxHeight > 4,h);  // used condensed spacing if maxHeight > 5
+ 
+          cout << endl;
+          cout << "\tHeight = " << height(p ) << ", Leafcount = "
+               << leafCount(p) <<  ", NodeCount = " << nodeCount(p) << endl;
+ 
+          cout <<    endl << "\tPre Order:     < ";
+          preorderTraversal(p);
+          cout << ">" << endl << endl << "\tIn Order:      < ";
+          inorderTraversal(p);
+          cout << ">" << endl <<endl <<  "\tPost Order:    < ";
+          postorderTraversal(p);
+          cout << ">" << endl <<endl <<  "\tLevel Order:   < ";
+          levelorderTraversal(p);
+          cout << ">" << endl << endl;
+ 
+          cout << "\tShortest Path: < " << shortestPath(p) << ">" << endl << endl;
+          cout << "\tLongest Path:  < " << longestPath(p)   << ">" << endl << endl;    
+          cout << "\tThis tree " << (isFull(p) ? "is" : "is not" ) << " full. " << endl << endl;
+          cout << "\tThis tree " << (isComplete(p) ? "is" : "is not" ) << " complete. " << endl << endl;        
+			
+          deleteTree(p);
+       }  
+    }
+    cout << "Bye!" << endl;
+    cin.get(); cin.get();
+    return 0;
+}
