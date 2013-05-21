@@ -3,9 +3,14 @@
 
 class Dictionary {
 	
-	public {
+	public:
+		
+		// Constructor
 		Dictionary(string words[], int numWords, int tableSize);
-	}
+	
+
+	private:
+
 }
 
 #endif;
