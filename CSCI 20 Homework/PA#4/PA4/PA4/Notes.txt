@@ -1,0 +1,17 @@
+CS assignment 4
+Notes:
+	AnagramSet class is a child class of the Dictionary class.
+	I may possibly need copy constructors.
+
+Functions of Dictionary class:
+	friend ostream &operator<<(ostream &out, Dictionary obj)
+	Dictionary(string words[], int numWords, int tableSize)
+	bool contains(string word)
+	void insert(string word)
+	AnagramSet getSet(string word)
+	void remove(string word)
+	
+Functoions of AnagramSet class:
+	friend ostream &operator<<(ostream &out, Dictionary obj)
+	int getSize()
+	
