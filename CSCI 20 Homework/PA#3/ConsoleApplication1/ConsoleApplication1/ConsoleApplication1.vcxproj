@@ -76,9 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="isComplete.cpp" />
-    <ClCompile Include="helperFunctions.cpp" />
-    <ClCompile Include="test2.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helperFunctions.h" />
