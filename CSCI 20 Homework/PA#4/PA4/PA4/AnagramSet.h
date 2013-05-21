@@ -4,9 +4,9 @@
 class AnagramSet {
 	friend ostream &operator<<(ostream &out, AnagramSet obj);
 
-	public:
+public:
 
-	private:
+private:
 }
 
 #endif;

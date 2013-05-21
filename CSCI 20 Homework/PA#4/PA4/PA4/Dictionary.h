@@ -3,13 +3,15 @@
 
 class Dictionary {
 	
-	public:
+	friend ostream &operator<<(ostream &out, Dictionary obj);
+	
+public:
 		
 		// Constructor
 		Dictionary(string words[], int numWords, int tableSize);
 	
 
-	private:
+private:
 
 }
 
