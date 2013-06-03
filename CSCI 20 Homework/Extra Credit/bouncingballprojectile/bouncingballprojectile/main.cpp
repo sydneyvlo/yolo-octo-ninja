@@ -28,7 +28,7 @@ int main() {
 	system("cls");
 	while(1) {
 		//simulator(sHeight, gravity);
-		//goingDown(sHeight, gravity);
+		goingDown(sHeight, gravity);
 		goingUp(sHeight, gravity);
 	}
 	
@@ -89,5 +89,11 @@ void goingUp(int sHeight, double gravity) {
 }
 
 void simulator(int sHeight, double gravity) {
+	int nextHeight = sHeight;
 
+	while(nextHeight > 0) {
+		goingDown(nextHeight, gravity);
+		goingUp(nextHeight, gravity);
+		nextHeight = heightCalc(nextHeight, gravity);
+	}
 }
