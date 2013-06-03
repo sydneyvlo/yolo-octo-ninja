@@ -4,11 +4,11 @@
 #include<iostream>
 #include<iomanip>
 #include <Windows.h>
-#include <cmath>
+#include <math.h>
 using namespace std;
 
 // Global Variables
-const float RESTITUTION = 0.75;
+const double RESTITUTION = 0.75;
 
 
 int heightCalc(int sHeight, double gravity);
@@ -28,7 +28,7 @@ int main() {
 	system("cls");
 	while(1) {
 		//simulator(sHeight, gravity);
-		goingDown(sHeight, gravity);
+		//goingDown(sHeight, gravity);
 		goingUp(sHeight, gravity);
 	}
 	
@@ -59,6 +59,7 @@ void goingDown(int sHeight, double gravity) {
 				Sleep(1);
 			}
 		}
+		
 		system("cls");
 		nLine--;
 	}
@@ -67,8 +68,9 @@ void goingDown(int sHeight, double gravity) {
 void goingUp(int sHeight, double gravity) {
 	int upToo = heightCalc(sHeight, gravity);
 	int nLine = 2;
+	
 	while (nLine <= upToo) {
-		for (int i = 101; i < 0; i--) {
+		for (int i = 101; i > 0; i--) {
 			if (i == nLine) {
 				cout << "@@" << endl;
 				Sleep(1);
@@ -87,21 +89,5 @@ void goingUp(int sHeight, double gravity) {
 }
 
 void simulator(int sHeight, double gravity) {
-	int nextHeight = sHeight;
-	while (nextHeight > 0) {
-		for (int i = 101; i > 0; i--) {
-			if (i == 1) {
-				cout << "ZZZZZZZZZZ" << endl; // Possible error, not sure if I really want the endl
-				Sleep(100);
-			} else if (i == nextHeight) {
-				cout << "@@" << endl; // Same here
-				Sleep(100);
-			} else {
-				cout << endl;
-				Sleep(100);
-			}
-		}
-		system("cls");
-		nextHeight = heightCalc(nextHeight, gravity);
-	}
+
 }
