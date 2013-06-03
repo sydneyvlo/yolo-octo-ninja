@@ -50,13 +50,13 @@ void goingDown(int sHeight, double gravity) {
 		for (int i = 101; i > 0; i--) {
 			if (i == nLine) {
 				cout << "@@" << endl;
-				Sleep(1);
+				//Sleep(1);
 			} else if (i == 1) {
 				cout << "ZZZZZZZZZZ" << endl; // P.E.
-				Sleep(1);
+				//Sleep(1);
 			} else {
 				cout << endl;
-				Sleep(1);
+				//Sleep(1);
 			}
 		}
 		
@@ -73,13 +73,13 @@ void goingUp(int sHeight, double gravity) {
 		for (int i = 101; i > 0; i--) {
 			if (i == nLine) {
 				cout << "@@" << endl;
-				Sleep(1);
+				//Sleep(1);
 			} else if(i == 1) {
 				cout << "ZZZZZZZZZZ" << endl;
-				Sleep(1);
+				//Sleep(1);
 			} else {
 				cout << endl;
-				Sleep(1);
+				//Sleep(1);
 			}
 		}
 
