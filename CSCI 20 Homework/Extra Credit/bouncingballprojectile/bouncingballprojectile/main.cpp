@@ -25,10 +25,11 @@ int main() {
 	cin >> gravity;
 	cout << "Enter a value for starting height: ";
 	cin >> sHeight;
-
+	system("cls");
 	while(1) {
 		//simulator(sHeight, gravity);
 		goingDown(sHeight, gravity);
+		goingUp(sHeight, gravity);
 	}
 	
 }
@@ -60,6 +61,28 @@ void goingDown(int sHeight, double gravity) {
 		}
 		system("cls");
 		nLine--;
+	}
+}
+
+void goingUp(int sHeight, double gravity) {
+	int upToo = heightCalc(sHeight, gravity);
+	int nLine = 2;
+	while (nLine <= upToo) {
+		for (int i = 101; i < 0; i--) {
+			if (i == nLine) {
+				cout << "@@" << endl;
+				Sleep(1);
+			} else if(i == 1) {
+				cout << "ZZZZZZZZZZ" << endl;
+				Sleep(1);
+			} else {
+				cout << endl;
+				Sleep(1);
+			}
+		}
+
+		system("cls");
+		nLine++;
 	}
 }
 
