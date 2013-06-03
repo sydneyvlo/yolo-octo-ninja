@@ -27,9 +27,9 @@ int main() {
 	cin >> sHeight;
 	system("cls");
 	while(1) {
-		//simulator(sHeight, gravity);
-		goingDown(sHeight, gravity);
-		goingUp(sHeight, gravity);
+		simulator(sHeight, gravity);
+		//goingDown(sHeight, gravity);
+		//goingUp(sHeight, gravity);
 	}
 	
 }
