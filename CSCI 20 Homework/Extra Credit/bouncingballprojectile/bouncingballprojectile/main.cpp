@@ -12,20 +12,22 @@ const float RESTITUTION = 0.75;
 
 
 int heightCalc(int sHeight, double gravity);
-void simulator(int height);
+void goingDown(int sHeight, double gravity);
+void goingUp(int sHeight, double gravity);
+void simulator(int sHeight, double gravity);
 
 int main() {
 	
 	double gravity;
 	int sHeight;
 
-	cout << "Enter a value for gravity: " << endl;
+	cout << "Enter a value for gravity: ";
 	cin >> gravity;
-	cout << "Enter a value for starting height: " << endl;
+	cout << "Enter a value for starting height: ";
 	cin >> sHeight;
 
-	while(cin>>) {
-		simulator(sHeight);
+	while(1) {
+		simulator(sHeight, gravity);
 	}
 	
 }
@@ -38,4 +40,26 @@ int heightCalc(int sHeight, double gravity) {
 	h2 = (pow(v2,2)/2)/gravity;
 
 	return h2;
+}
+
+
+
+void simulator(int sHeight, double gravity) {
+	int nextHeight = sHeight;
+	while (nextHeight > 0) {
+		for (int i = 101; i > 0; i--) {
+			if (i == 1) {
+				cout << "ZZZZZZZZZZ" << endl; // Possible error, not sure if I really want the endl
+				Sleep(100);
+			} else if (i == nextHeight) {
+				cout << "@@" << endl; // Same here
+				Sleep(100);
+			} else {
+				cout << endl;
+				Sleep(100);
+			}
+		}
+		system("cls");
+		nextHeight = heightCalc(nextHeight, gravity);
+	}
 }
