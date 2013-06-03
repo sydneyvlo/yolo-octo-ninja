@@ -27,7 +27,8 @@ int main() {
 	cin >> sHeight;
 
 	while(1) {
-		simulator(sHeight, gravity);
+		//simulator(sHeight, gravity);
+		goingDown(sHeight, gravity);
 	}
 	
 }
@@ -42,7 +43,25 @@ int heightCalc(int sHeight, double gravity) {
 	return h2;
 }
 
-
+void goingDown(int sHeight, double gravity) {
+	int nLine = sHeight;
+	while (nLine != 1) {
+		for (int i = 101; i > 0; i--) {
+			if (i == nLine) {
+				cout << "@@" << endl;
+				Sleep(1);
+			} else if (i == 1) {
+				cout << "ZZZZZZZZZZ" << endl; // P.E.
+				Sleep(1);
+			} else {
+				cout << endl;
+				Sleep(1);
+			}
+		}
+		system("cls");
+		nLine--;
+	}
+}
 
 void simulator(int sHeight, double gravity) {
 	int nextHeight = sHeight;
